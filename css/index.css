@@ -1,0 +1,174 @@
+html, body {
+	margin: 0;
+	height: 100%;
+	overflow: hidden;
+	font-family: sans-serif;
+}
+				
+a,
+a:hover,
+a:active,
+a:visited,
+a:focus {
+	text-decoration: none; color:inherit;
+}
+
+.noselect {
+  -webkit-touch-callout:  none; /* iOS Safari */
+	-webkit-user-select:  none; /* Safari */
+	   -moz-user-select:  none; /* Firefox */
+		-ms-user-select:  none; /* Internet Explorer/Edge */
+			user-select:  none; /* Non-prefixed version, currently supported by Chrome and Opera */
+}
+
+#app {
+	display: flex;
+	height: 100%;
+	background-color:  var( --app-bg );
+	color: var( --app-color );
+}
+#app.page1 {
+	font-size: var( --app-page1-fontSize );
+}
+#app.page2 {
+	flex-direction: column;
+	font-size: var( --app-page2-fontSize );
+}
+	#app > div {
+		display: flex;
+		align-items: center;
+	}
+
+	#controls {
+	}
+	#app.page1 #controls {
+		flex: 1;
+		height: 100%;
+		flex-direction: column;
+	}
+	#app.page2 #controls {
+		// height: 80px;
+		height: 150px;
+	}
+		#app.page2 #controls > * {
+			padding: 10px;
+		}
+
+		#theme {
+			align-self: flex-end;
+		}
+		#app.page1 #theme {
+			text-align: right;
+		}
+			#app.page1 #theme a {
+				font-size: var( --app-page2-fontSize );
+				padding: 10px;
+			}
+		#app.page2 #theme {
+			order: 2;
+		}
+
+		#logo {
+		}
+		#app.page1 #logo {
+		}
+			#app.page1 #logo img {
+				height: 70%;
+			}
+		#app.page2 #logo {
+			width: 8%;
+			padding: 10px;
+		}
+			#app.page2 #logo img {
+				width: 100%;
+			}
+
+		#search {
+		}
+			#app #search input {
+				padding: .8em .6em;
+				border: 2px solid var( --app-search-bdColor );
+				border-radius: var( --app-search-bdRadius );
+				background-color: var( --app-search-bg );
+				color: var( --app-color );
+				outline: none;
+				transition: border-color .2s;
+			}
+		#app.page1 #search {
+			height: 120px;
+			padding: .3em;
+			justify-content: center;
+		}
+			#app.page1 #search input {
+				width: 25%;
+				font-size: var( --app-page1-fontSize );;
+			}
+			#app.page1 #search input:focus {
+				border-color: var( --app-search-bdColor-focus );
+			}
+		#app.page2 #search {
+			flex: 2;
+			justify-content: flex-start;
+		}
+			#app.page2 #search input {
+				width: 100%;
+				height: 30%;
+				font-size: var( --app-page2-fontSize );
+				box-sizing: border-box;
+			}
+
+		#keywords {}
+		#app.page1 #keywords {
+			display: block;
+			flex: 1;
+			width: 50%;
+			padding: 25px 10px;
+			margin: auto;
+			text-align: center;
+		}
+			#keywords a {
+				margin: 0 10px;
+			}
+			#app.page1 #keywords a {
+				text-decoration: none;
+				font-size: var( --app-keywords-fontSize );
+			}
+		#app.page2 #keywords {
+			flex: 2;
+			padding: 10px;
+		}
+
+	#app.page2 #result {
+		flex: 2.5;
+		border-top: 2px solid var( --app-result-bdColor );
+		border-bottom: 2px solid var( --app-result-bdColor );
+		background-color: #3f5e6d;
+	}
+
+	#app.page2 #selection {
+		flex: 1.8;
+		display: flex;
+		flex-direction: column;
+	}
+		#app.page2 #selection #info {
+			display: flex;
+			padding: .1em .3em;
+			font-size: var( --app-selection-info );
+			font-variant: all-small-caps;
+		}
+		#app.page2 #selection #info span.title {
+			flex: 1;
+		}
+		#app.page2 #selection #info span.selected_nb {
+			flex: 0.04;
+			text-align:right;
+		}
+		#app.page2 #selection #selected {
+			flex: 1;
+		}
+
+	#app.page1 #result,
+	#app.page1 #selection {
+		flex: 0;
+		display: none;
+	}

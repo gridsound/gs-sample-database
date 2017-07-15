@@ -1,0 +1,19 @@
+:root {
+	--app-bg: #3D5A68;
+	--app-page1-fontSize: 36px;
+	--app-page2-fontSize: 24px;
+	--app-color: #9fb9c5;
+
+	--app-search-bg: #476472;
+	--app-search-bdColor: #658290;
+	--app-search-bdRadius: 4px;
+	--app-search-bdColor-focus: #7E9BA9;
+
+	--app-result-bdColor: #4b6571;
+	--app-result-bgColor: #3f5e6d;
+
+	--app-keywords-color: #;
+	--app-keywords-fontSize: 30px;
+
+	--app-selection-info: 20px;
+}
