@@ -100,7 +100,6 @@ a:focus {
 			justify-content: center;
 		}
 			#app.page1 #search input {
-				width: 25%;
 				font-size: var( --app-page1-fontSize );;
 			}
 			#app.page1 #search input:focus {
