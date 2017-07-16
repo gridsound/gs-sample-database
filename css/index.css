@@ -68,8 +68,10 @@ a:focus {
 		}
 
 		#logo {
+			background: url("../assets/icon.svg") center no-repeat;
 		}
 		#app.page1 #logo {
+			flex: 1;
 		}
 			#app.page1 #logo img {
 			}
