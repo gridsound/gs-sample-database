@@ -34,7 +34,7 @@ a:focus {
 	flex-direction: column;
 	font-size: var( --app-page2-fontSize );
 }
-	#app > div {
+	#app > #controls {
 		display: flex;
 		align-items: center;
 	}
@@ -68,7 +68,7 @@ a:focus {
 		}
 
 		#logo {
-			background: url("../assets/icon.svg") center no-repeat;
+			background: center no-repeat url(../assets/icon.svg);
 		}
 		#app.page1 #logo {
 			flex: 1;
@@ -95,9 +95,6 @@ a:focus {
 				transition: border-color .2s;
 			}
 		#app.page1 #search {
-			height: 120px;
-			padding: .3em;
-			justify-content: center;
 		}
 			#app.page1 #search input {
 				font-size: var( --app-page1-fontSize );;
