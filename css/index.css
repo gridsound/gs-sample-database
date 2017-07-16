@@ -58,7 +58,6 @@ a:focus {
 			align-self: flex-end;
 		}
 		#app.page1 #theme {
-			text-align: right;
 		}
 			#app.page1 #theme a {
 				font-size: var( --app-page2-fontSize );
