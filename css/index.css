@@ -39,32 +39,30 @@ a:focus {
 		align-items: center;
 	}
 
-	#controls {
-	}
 	#app.page1 #controls {
 		flex: 1;
 		height: 100%;
 		flex-direction: column;
 	}
 	#app.page2 #controls {
-		// height: 80px;
 		height: 150px;
 	}
-		#app.page2 #controls > * {
-			padding: 10px;
+		#app.page2 #controls > div {
 		}
 
 		#theme {
-			align-self: flex-end;
+			padding: 10px;
+			font-size: var( --app-page2-fontSize );
 		}
 		#app.page1 #theme {
+			align-self: flex-end;
 		}
 			#app.page1 #theme a {
-				font-size: var( --app-page2-fontSize );
-				padding: 10px;
 			}
 		#app.page2 #theme {
 			order: 2;
+			padding-top: 10px;
+			align-self: flex-start;
 		}
 
 		#logo {
