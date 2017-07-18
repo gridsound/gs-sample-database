@@ -76,9 +76,11 @@ a:focus {
 		}
 
 		#search {
+			display: flex;
+			flex-direction: column;
 		}
-			#app #search input {
-				padding: .8em .6em;
+			#search input {
+				padding: 0 .6em;
 				border: 2px solid var( --app-search-bdColor );
 				border-radius: var( --app-search-bdRadius );
 				background-color: var( --app-search-bg );
@@ -86,17 +88,32 @@ a:focus {
 				outline: none;
 				transition: border-color .2s;
 			}
+			#search input:focus {
+				border-color: var( --app-search-bdColor-focus );
+			}
 				#keywords a {
-					margin: 0 10px;
+					padding: 0 .5em;
+					border-radius: 15px;
+					background-color: var( --app-page2-keywords-bg );
+					transition: background-color .2s;
 				}
+				#keywords a:hover {
+					background-color: var( --app-page2-keywords-bg-focus );
+				}
+				#keywords a + a {
+					margin-left: 10px;
+				}
+					#keywords i {
+						font-size: .7em;
+						margin-right: .3em;
+					}
 		#app.page1 #search {
 			padding-top: 1em;
+			align-items: center;
 		}
 			#app.page1 #search input {
+				padding: .8em .6em;
 				font-size: var( --app-page1-fontSize );;
-			}
-			#app.page1 #search input:focus {
-				border-color: var( --app-search-bdColor-focus );
 			}
 			#app.page1 #keywords {
 				flex: 1;
@@ -106,21 +123,27 @@ a:focus {
 			}
 				#app.page1 #keywords a {
 					text-decoration: none;
-					font-size: var( --app-keywords-fontSize );
+					font-size: var( --app-page1-keywords-fontSize );
+					white-space: nowrap;
 				}
 		#app.page2 #search {
-			width: calc( 100% - var( --app-page2-logo-width ) - var( --app-page2-theme-width ) );
-			height: 100%;
+			flex: 1;
+			justify-content: center;
 		}
 			#app.page2 #search input {
-				width: 100%;
-				height: 50%;
+				flex: 1;
 				font-size: var( --app-page2-fontSize );
 				box-sizing: border-box;
 			}
 			#app.page2 #keywords {
 				order: 2;
+				flex: 1;
+				display: flex;
+				align-items: center;
 			}
+				#app.page2 #keywords a {
+					font-size: var( --app-page2-keywords-fontSize );
+				}
 
 	#app.page2 #result {
 		flex: 2.5;

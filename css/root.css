@@ -20,7 +20,10 @@
 	--app-result-bgColor: #3f5e6d;
 	--app-result-sampleTitle-fontSize: 14px;
 
-	--app-keywords-fontSize: 30px;
+	--app-page1-keywords-fontSize: 30px;
+	--app-page2-keywords-fontSize: 20px;
+	--app-page2-keywords-bg: #466777;
+	--app-page2-keywords-bg-focus: #537b8e;
 	// --app-page2-keywords-width: ;
 
 	--app-selection-info: 20px;
