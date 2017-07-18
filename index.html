@@ -7,6 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 	<link rel="stylesheet" type="text/css" href="https://gridsound.github.io/gs-ui-components/src/gsuiAudioBlock/gsuiAudioBlock.css">
 	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<script type="text/javascript">function lg( a ) { return console.log.apply( console, arguments ), a; }</script>
 </head>
 <body>
 
@@ -14,8 +15,8 @@
 	<div id="controls">
 		<a id="theme" class="gray fa fa-fw fa-lightbulb-o" href="#"></a>
 		<div id="logo"></div>
-		<div id="search">
-			<input class="noselect"/>
+		<form id="search">
+			<input class="noselect" name="q"/>
 			<div id="keywords">
 				<a href="#"><i class="fa fa-tag" aria-hidden="true"></i>kick</a>
 				<a href="#"><i class="fa fa-tag" aria-hidden="true"></i>drum</a>
@@ -26,7 +27,7 @@
 				<a href="#"><i class="fa fa-tag" aria-hidden="true"></i>tape</a>
 				<a href="#"><i class="fa fa-tag" aria-hidden="true"></i>polieasdasd</a>
 			</div>
-		</div>
+		</form>
 	</div>
 	<div id="result" class="gsui-nocrop"></div>
 	<div id="selection">
