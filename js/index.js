@@ -1,59 +1,38 @@
-var uiBlock = [];
+var uiBlock = [],
+	i = 0;
 
-for ( i = 0 ; i < 10 ; i++ ) {
-
+for ( ; i < 10; ++i ) {
 	uiBlock[ i ] = new gsuiAudioBlock();
-
-	document.querySelector( "#result" ).append( uiBlock[ i ].rootElement );
 	uiBlock[ i ].datatype( "buffer" );
+	document.querySelector( "#result" ).append( uiBlock[ i ].rootElement );
 }
 
-/*  -----------------  */
+//  -----------------
 
-appChangeView = function() {
-	var elApp = document.getElementById( "app" );
+function appChangeView() {
+	var clApp = document.getElementById( "app" ).classList,
+		query = isValidHash( location.hash );
 
-	if ( window.location.hash ) {
-		elApp.classList.remove( "page1" );
-		elApp.classList.add( "page2" );
-		fillInput();
-	} else {
-		elApp.classList.remove( "page2" );
-		elApp.classList.add( "page1" );
-	}
+	clApp.toggle( "page1", !query );
+	clApp.toggle( "page2", query );
+	setInput();
 }
 
-fillInput = function() {
-	var
-		hash = window.location.hash,
-		elInput = document.querySelector( "input" )
-	;
-
-	if ( hash ){
-		q = hash.replace( /^\+/g, " " ).replace( /\/$/g, "" )
-		elInput.value = q.substring( 1 );
-	}
+function setInput() {
+	document.querySelector( "input" ).value =
+		isValidHash( location.hash )
+			? location.hash.replace( /\+/g, " " ).substring( 2 )
+			: "";
 }
 
-init = function() {
-	appChangeView();
+function isValidHash( hash ) {
+	return hash && hash[ 0 ] === "#" && hash[ 1 ] === "/";
 }
-
-init();
 
 window.onhashchange = appChangeView;
-
 document.querySelector( "form" ).onsubmit = function( e ){
-	window.location.hash = `#${this.q.value.trim().replace( /\s+/g, "+" )}/`;
+	location.hash = "#/" + this.q.value.trim().replace( /\s+/g, "+" );
 	return false;
 };
 
-/** /
-fetch( "https://gridsound.github.io/assets/demo-files/120bpm-4s.wav" )
-	.then( res => res.arrayBuffer() )
-	.then( arrbuf => ctx.decodeAudioData( arrbuf ) )
-	.then( audbuf => {
-		uiBlock.name( "An audio block" );
-		uiBlock.updateData( audbuf, 0, audbuf.duration );
-	} );
-/**/
+appChangeView();
