@@ -4,36 +4,55 @@
 	<title>GridSound Sample Database</title>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="css/root.css">
-	<link rel="stylesheet" type="text/css" href="css/index.css">
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+	<link rel="stylesheet" type="text/css" href="https://gridsound.github.io/gs-ui-components/src/gsuiAudioBlock/gsuiAudioBlock.css">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
 </head>
 <body>
-	<div id="app" class="page1">
-		<div id="controls">
-			<a id="theme" class="gray fa fa-fw fa-lightbulb-o" href="#"></a>
-			<div id="logo"></div>
-			<div id="search">
-				<input class="noselect"/>
-				<div id="keywords">
-					<a href="#"><i class="fa fa-tag" aria-hidden="true"></i>kick</a>
-					<a href="#"><i class="fa fa-tag" aria-hidden="true"></i>drum</a>
-					<a href="#"><i class="fa fa-tag" aria-hidden="true"></i>bassss</a>
-					<a href="#"><i class="fa fa-tag" aria-hidden="true"></i>electro</a>
-					<a href="#"><i class="fa fa-tag" aria-hidden="true"></i>plop</a>
-					<a href="#"><i class="fa fa-tag" aria-hidden="true"></i>kick</a>
-					<a href="#"><i class="fa fa-tag" aria-hidden="true"></i>tape</a>
-					<a href="#"><i class="fa fa-tag" aria-hidden="true"></i>polieasdasd</a>
-				</div>
+
+<div id="app" class="page1">
+	<div id="controls">
+		<a id="theme" class="gray fa fa-fw fa-lightbulb-o" href="#"></a>
+		<div id="logo"></div>
+		<div id="search">
+			<input class="noselect"/>
+			<div id="keywords">
+				<a href="#"><i class="fa fa-tag" aria-hidden="true"></i>kick</a>
+				<a href="#"><i class="fa fa-tag" aria-hidden="true"></i>drum</a>
+				<a href="#"><i class="fa fa-tag" aria-hidden="true"></i>bassss</a>
+				<a href="#"><i class="fa fa-tag" aria-hidden="true"></i>electro</a>
+				<a href="#"><i class="fa fa-tag" aria-hidden="true"></i>plop</a>
+				<a href="#"><i class="fa fa-tag" aria-hidden="true"></i>kick</a>
+				<a href="#"><i class="fa fa-tag" aria-hidden="true"></i>tape</a>
+				<a href="#"><i class="fa fa-tag" aria-hidden="true"></i>polieasdasd</a>
 			</div>
-		</div>
-		<div id="result"></div>
-		<div id="selection">
-			<div id="info">
-				<span class="title">Selections</span>
-				<span class="selected_nb">0</span>
-			</div>
-			<div id="selected"></div>
 		</div>
 	</div>
+	<div id="result" class="gsui-nocrop"></div>
+	<div id="selection">
+		<div id="info">
+			<span class="title">Selections</span>
+			<span class="selected_nb">0</span>
+		</div>
+		<div id="selected"></div>
+	</div>
+</div>
+
+<template id="gsuiAudioBlock">
+	<div class="gsuiAudioBlock">
+		<div class="gsui-bg"></div>
+		<div class="gsui-head">
+			<span class="gsui-name"></span>
+		</div>
+		<div class="gsui-content"></div>
+		<div class="gsui-crop gsui-a"></div>
+		<div class="gsui-crop gsui-b"></div>
+	</div>
+</template>
+
+<script type="text/javascript" src="https://gridsound.github.io/gs-ui-components/src/gsuiAudioBlock/gsuiAudioBlock.js"></script>
+<script type="text/javascript" src="https://gridsound.github.io/gs-ui-components/src/gsuiWaveform/gsuiWaveform.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+
 </body>
 </html>

@@ -8,6 +8,8 @@
 
 	--app-page2-theme-width: 17px;
 
+	--app-page1-logo-width: 100%;
+	--app-page1-logo-height: 300px;
 	--app-page2-logo-width: var( --app-page2-controls-height );
 	--app-page2-logo-height: 100%;
 
@@ -15,16 +17,18 @@
 	--app-search-bdColor: #658290;
 	--app-search-bdRadius: 4px;
 	--app-search-bdColor-focus: #7E9BA9;
+	--app-page2-search-input-height: 50%;
 
-	--app-result-bdColor: #4b6571;
-	--app-result-bgColor: #3f5e6d;
-	--app-result-sampleTitle-fontSize: 14px;
-
+	--app-page1-keywords-width: 50%;
 	--app-page1-keywords-fontSize: 30px;
 	--app-page2-keywords-fontSize: 20px;
 	--app-page2-keywords-bg: #466777;
-	--app-page2-keywords-bg-focus: #537b8e;
-	// --app-page2-keywords-width: ;
+	--app-page2-keywords-bgColor: #537b8e;
+
+	--app-result-bdColor: #4b6571;
+	--app-result-bgColor: #3f5e6d;;
+	--app-result-gsuiAudioBlock-marginLeft: 10px;
+	--app-result-gsuiAudioBlock-height: 70px;
 
 	--app-selection-info: 20px;
 }
