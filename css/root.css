@@ -13,20 +13,20 @@
 	--app-page2-logo-width: var( --app-page2-controls-height );
 	--app-page2-logo-height: 100%;
 
-	--app-search-bg: #476472;
-	--app-search-bdColor: #658290;
+	--app-search-bg: rgba(255, 255, 255, 0.08);
+	--app-search-bg-focus: rgba(255, 255, 255, 0.1);
 	--app-search-bdRadius: 4px;
-	--app-search-bdColor-focus: #7E9BA9;
 	--app-page2-search-input-height: 50%;
 
+	--app-keywords-bg: rgba(255, 255, 255, 0.12);
+	--app-keywords-bg-focus: rgba(255, 255, 255, 0.16);
 	--app-page1-keywords-width: 50%;
 	--app-page1-keywords-fontSize: 30px;
 	--app-page2-keywords-fontSize: 20px;
-	--app-page2-keywords-bg: #466777;
-	--app-page2-keywords-bgColor: #537b8e;
 
-	--app-result-bdColor: #4b6571;
-	--app-result-bgColor: #3f5e6d;;
+	--app-result-bs-top: 0 2px 2px rgba(0, 0, 0, 0.17);
+	--app-result-bs-bottom: 0 -2px 2px rgba(0, 0, 0, 0.17);
+	--app-result-bgColor: rgba(255, 255, 255, 0.03);
 	--app-result-gsuiAudioBlock-marginLeft: 10px;
 	--app-result-gsuiAudioBlock-height: 70px;
 

@@ -35,9 +35,11 @@ a:focus {
 	font-size: var( --app-page2-fontSize );
 }
 
-	#app > #controls {
+	#controls {
 		display: flex;
 		box-sizing: border-box;
+		box-shadow: var( --app-result-bs-top );
+		z-index: 1;
 	}
 	#app.page1 #controls {
 		flex: 1;
@@ -62,6 +64,7 @@ a:focus {
 
 		#logo {
 			background: no-repeat center url( "../assets/icon.svg" );
+			filter: invert();
 		}
 		#app.page1 #logo {
 			width: var( --app-page1-logo-width );
@@ -81,15 +84,15 @@ a:focus {
 		}
 			#search input {
 				padding: 0 .6em;
-				border: 2px solid var( --app-search-bdColor );
+				border: 0;
 				border-radius: var( --app-search-bdRadius );
 				background-color: var( --app-search-bg );
 				color: var( --app-color );
 				outline: none;
-				transition: border-color .2s;
+				transition: background-color .2s;
 			}
 			#search input:focus {
-				border-color: var( --app-search-bdColor-focus );
+				background-color: var( --app-search-bg-focus );
 			}
 		#app.page1 #search {
 			padding-top: 1em;
@@ -116,12 +119,12 @@ a:focus {
 		#keywords a {
 			padding: 0 .5em;
 			border-radius: 15px;
-			background-color: var( --app-page2-keywords-bg );
+			background-color: var( --app-keywords-bg );
 			transition: background-color .2s;
 			white-space: nowrap;
 		}
 		#keywords a:hover {
-			background-color: var( --app-page2-keywords-bgColor );
+			background-color: var( --app-keywords-bg-focus );
 		}
 		#keywords a + a {
 			margin-left: 10px;
@@ -151,8 +154,6 @@ a:focus {
 	#result {
 		flex: 2.5;
 		padding-right: var( --app-result-gsuiAudioBlock-marginLeft );
-		border-top: 2px solid var( --app-result-bdColor );
-		border-bottom: 2px solid var( --app-result-bdColor );
 		background-color: var( --app-result-bgColor );
 		font-size: 0;
 	}
@@ -169,6 +170,7 @@ a:focus {
 		flex: 1.8;
 		display: flex;
 		flex-direction: column;
+		box-shadow: var( --app-result-bs-bottom );
 	}
 		#app.page2 #selection #info {
 			display: flex;
