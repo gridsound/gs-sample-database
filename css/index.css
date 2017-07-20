@@ -66,15 +66,26 @@ a:focus {
 			background: no-repeat center url( "../assets/icon.svg" );
 			filter: invert();
 		}
+		#logo a {
+			display: block;
+		}
 		#app.page1 #logo {
 			width: var( --app-page1-logo-width );
 			height: var( --app-page1-logo-height );
 			min-height: 150px;
 			background-size: contain;
 		}
+			#app.page1 #logo a {
+				margin: auto;
+				width: var( --app-page1-logo-height );
+				height: var( --app-page1-logo-width );
+			}
+		#app.page2 #logo,
+		#app.page2 #logo a {
+			width: var( --app-page2-logo-width );
+			height: var( --app-page2-logo-height );
+		}
 		#app.page2 #logo {
-			width: var( --app-page2-controls-height );
-			height: var( --app-page2-controls-height );
 			background-size: 80%;
 		}
 
@@ -182,7 +193,7 @@ a:focus {
 			flex: 1;
 		}
 		#app.page2 #selection #info span.selected_nb {
-			flex: 0.04;
+			flex: .04;
 			text-align:right;
 		}
 		#app.page2 #selection #selected {
