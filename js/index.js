@@ -1,20 +1,28 @@
-var uiBlock = [],
+"use strict";
+
+// Use to generate gsuiAudioBlock in #result
+function generateAudioBlock( el ) {
+	var uiBlock = [],
 	i = 0;
 
-for ( ; i < 10; ++i ) {
-	uiBlock[ i ] = new gsuiAudioBlock();
-	uiBlock[ i ].datatype( "buffer" );
-	document.querySelector( "#result" ).append( uiBlock[ i ].rootElement );
+	for ( ; i < 10; ++i ) {
+		uiBlock[ i ] = new gsuiAudioBlock();
+		uiBlock[ i ].datatype( "buffer" );
+		el.append( uiBlock[ i ].rootElement );
+	}
 }
 
-//  -----------------
+function onHashChange() {
+	isValidHash( location.hash ) ? showPage( "page2" ) : showPage( "page1" );
+	setInput();
+}
 
-function appChangeView() {
-	var clApp = document.getElementById( "app" ).classList,
-		query = isValidHash( location.hash );
+function setHash( v ) {
+	location.hash = "#/" + v.trim().replace( /\s+/g, "+" );
+}
 
-	clApp.toggle( "page1", !query );
-	clApp.toggle( "page2", query );
+function isValidHash( hash ) {
+	return hash && hash[ 0 ] === "#" && hash[ 1 ] === "/" && hash.length > 2;
 }
 
 function setInput() {
@@ -22,10 +30,6 @@ function setInput() {
 		isValidHash( location.hash )
 			? location.hash.replace( /\+/g, " " ).substring( 2 )
 			: "";
-}
-
-function isValidHash( hash ) {
-	return hash && hash[ 0 ] === "#" && hash[ 1 ] === "/";
 }
 
 function keywordsOnclick() {
@@ -41,17 +45,27 @@ function keywordsOnclick() {
 	};
 }
 
-function hashChange() {
-	appChangeView();
-	setInput();
+function showPage( page ) {
+	var elApp = document.getElementById( "app" );
+
+	elApp.className = "";
+	elApp.classList.add( `${page}` );
 }
 
-window.onhashchange = hashChange;
-document.querySelector( "form" ).onsubmit = function() {
-	location.hash = "#/" + this.q.value.trim().replace( /\s+/g, "+" );
-	return false;
-};
+function gsSampleDatabase() {
+	var	elResult = document.getElementById( "result" );
 
-appChangeView();
-setInput();
-keywordsOnclick();
+	window.onhashchange = onHashChange;
+	document.querySelector( "form" ).onsubmit = function() {
+		setHash( this.q.value );
+		return false;
+	};
+
+	generateAudioBlock( elResult );
+	isValidHash( location.hash ) ? showPage( "page2" ) : showPage( "page1" );
+	setInput();
+	keywordsOnclick();
+}
+
+gsSampleDatabase();
+
