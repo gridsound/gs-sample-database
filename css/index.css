@@ -23,116 +23,110 @@ a:focus {
 
 #app {
 	display: flex;
+	flex-direction: column;
 	height: 100%;
 	background-color:  var( --app-bg );
 	color: var( --app-color );
+	font-size: var( --app-fontSize );
 }
-#app.page1 {
-	font-size: var( --app-page1-fontSize );
-}
-#app.page2 {
-	flex-direction: column;
-	font-size: var( --app-page2-fontSize );
+#app.main {
+	font-size: var( --app-main-fontSize );
 }
 
 	#controls {
 		display: flex;
+		flex-wrap: wrap;
+		height: var( --app-controls-height );
 		box-sizing: border-box;
 		box-shadow: var( --app-result-bs-top );
 		z-index: 1;
 	}
-	#app.page1 #controls {
+	#app.main #controls {
 		flex: 1;
 		flex-direction: column;
 	}
-	#app.page2 #controls {
-		flex-wrap: wrap;
-		height: var( --app-page2-controls-height );
-	}
 
 		#theme {
-			font-size: var( --app-page2-fontSize );
-			padding: 0.2em;
-		}
-		#app.page1 #theme {
-			align-self: flex-end;
-		}
-		#app.page2 #theme {
 			order: 1;
 			align-self: flex-start;
+			padding: 0.2em;
+			font-size: var( --app-fontSize );
+		}
+		#app.main #theme {
+			order: 0;
+			align-self: flex-end;
 		}
 
+		#logo,
+		#logo a {
+			width: var( --app-logo-width );
+			height: var( --app-logo-height );
+		}
 		#logo {
 			background: no-repeat center url( "../assets/icon.svg" );
-			filter: invert();
+			filter: var( --app-logo-filter );
+			background-size: 80%;
 		}
-		#logo a {
-			display: block;
-		}
-		#app.page1 #logo {
-			width: var( --app-page1-logo-width );
-			height: var( --app-page1-logo-height );
+			#logo a {
+				display: block;
+			}
+		#app.main #logo {
+			width: var( --app-main-logo-width );
+			height: var( --app-main-logo-height );
 			min-height: 150px;
 			background-size: contain;
 		}
-			#app.page1 #logo a {
+			#app.main #logo a {
 				margin: auto;
-				width: var( --app-page1-logo-height );
-				height: var( --app-page1-logo-width );
+				width: var( --app-main-logo-height );
+				height: var( --app-main-logo-width );
 			}
-		#app.page2 #logo,
-		#app.page2 #logo a {
-			width: var( --app-page2-logo-width );
-			height: var( --app-page2-logo-height );
-		}
-		#app.page2 #logo {
-			background-size: 80%;
-		}
 
 		#search {
 			display: flex;
+			flex: 1;
 			flex-direction: column;
+			justify-content: center;
 		}
 			#search input {
+				height: var( --app-search-input-height );
 				padding: 0 .6em;
+				margin-top: 10px;
 				border: 0;
 				border-radius: var( --app-search-bdRadius );
-				background-color: var( --app-search-bg );
 				color: var( --app-color );
+				background-color: var( --app-search-bg );
+				font-size: var( --app-fontSize );
 				outline: none;
+				box-sizing: border-box;
 				transition: background-color .2s;
 			}
 			#search input:focus {
 				background-color: var( --app-search-bg-focus );
 			}
-		#app.page1 #search {
+		#app.main #search {
+			flex: initial;
 			padding-top: 1em;
 			align-items: center;
 		}
-			#app.page1 #search input {
+			#app.main #search input {
 				padding: .8em .6em;
-				font-size: var( --app-page1-fontSize );;
-			}
-		#app.page2 #search {
-			flex: 1;
-			justify-content: center;
-		}
-			#app.page2 #search input {
-				height: var( --app-page2-search-input-height );
-				margin-top: 10px;
-				font-size: var( --app-page2-fontSize );
-				box-sizing: border-box;
+				font-size: var( --app-main-fontSize );;
 			}
 
 		#keywords {
+			display: flex;
+			order: 2;
 			flex: 1;
+			align-items: center;
 		}
 		#keywords a {
 			padding: 0 .5em;
 			border-radius: 15px;
 			background-color: var( --app-keywords-bg );
-			transition: background-color .2s;
+			font-size: var( --app-keywords-fontSize );
 			white-space: nowrap;
+			transition: background-color .2s;
 		}
 		#keywords a:hover {
 			background-color: var( --app-keywords-bg-focus );
@@ -144,22 +138,15 @@ a:focus {
 				font-size: .7em;
 				margin-right: .3em;
 			}
-			#app.page1 #keywords {
-				width: var( --app-page1-keywords-width );
+			#app.main #keywords {
+				display: block;
+				width: var( --app-main-keywords-width );
 				padding: 1em .4em 0;
 				text-align: center;
 			}
-				#app.page1 #keywords a {
+				#app.main #keywords a {
 					text-decoration: none;
-					font-size: var( --app-page1-keywords-fontSize );
-				}
-			#app.page2 #keywords {
-				order: 2;
-				display: flex;
-				align-items: center;
-			}
-				#app.page2 #keywords a {
-					font-size: var( --app-page2-keywords-fontSize );
+					font-size: var( --app-main-keywords-fontSize );
 				}
 
 	#result {
@@ -168,7 +155,6 @@ a:focus {
 		background-color: var( --app-result-bgColor );
 		font-size: 0;
 	}
-
 		.gsuiAudioBlock {
 			position: relative;
 			display: inline-block;
@@ -177,31 +163,31 @@ a:focus {
 			margin: 10px 0 0 var( --app-result-gsuiAudioBlock-marginLeft );
 		}
 
-	#app.page2 #selection {
+	#selection {
 		flex: 1.8;
 		display: flex;
 		flex-direction: column;
 		box-shadow: var( --app-result-bs-bottom );
 	}
-		#app.page2 #selection #info {
+		#selection #info {
 			display: flex;
 			padding: .1em .3em;
 			font-size: var( --app-selection-info );
 			font-variant: all-small-caps;
 		}
-		#app.page2 #selection #info span.title {
+		#selection #info span.title {
 			flex: 1;
 		}
-		#app.page2 #selection #info span.selected_nb {
+		#selection #info span.selected_nb {
 			flex: .04;
 			text-align:right;
 		}
-		#app.page2 #selection #selected {
+		#selection #selected {
 			flex: 1;
 		}
 
-	#app.page1 #result,
-	#app.page1 #selection {
+	#app.main #result,
+	#app.main #selection {
 		flex: 0;
 		display: none;
 	}

@@ -13,7 +13,7 @@ function generateAudioBlock( el ) {
 }
 
 function onHashChange() {
-	isValidHash( location.hash ) ? showPage( "page2" ) : showPage( "page1" );
+	showPage();
 	setInput();
 }
 
@@ -45,24 +45,19 @@ function keywordsOnclick() {
 	};
 }
 
-function showPage( page ) {
-	var elApp = document.getElementById( "app" );
-
-	elApp.className = "";
-	elApp.classList.add( `${page}` );
+function showPage() {
+	document.getElementById( "app" ).classList.toggle( "main", !isValidHash( location.hash ) );
 }
 
 function gsSampleDatabase() {
-	var	elResult = document.getElementById( "result" );
-
 	window.onhashchange = onHashChange;
 	document.querySelector( "form" ).onsubmit = function() {
 		setHash( this.q.value );
 		return false;
 	};
 
-	generateAudioBlock( elResult );
-	isValidHash( location.hash ) ? showPage( "page2" ) : showPage( "page1" );
+	generateAudioBlock( document.getElementById( "result" ) );
+	showPage();
 	setInput();
 	keywordsOnclick();
 }
