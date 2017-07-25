@@ -55,6 +55,13 @@ function gsSampleDatabase() {
 		setHash( this.q.value );
 		return false;
 	};
+	document.getElementById( "theme" ).onclick = function() {
+		var clHtml = document.querySelector( "html" ).classList;
+
+		clHtml.toggle( "dark" );
+		clHtml.toggle( "light" );
+		return false;
+	};
 
 	generateAudioBlock( document.getElementById( "result" ) );
 	showPage();

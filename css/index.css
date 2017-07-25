@@ -28,6 +28,7 @@ a:focus {
 	background-color:  var( --app-bg );
 	color: var( --app-color );
 	font-size: var( --app-fontSize );
+	transition: background-color var( --app-transitionDuration );
 }
 #app.main {
 	font-size: var( --app-main-fontSize );
@@ -66,6 +67,7 @@ a:focus {
 			background: no-repeat center url( "../assets/icon.svg" );
 			filter: var( --app-logo-filter );
 			background-size: 80%;
+			transition: filter var( --app-transitionDuration );
 		}
 			#logo a {
 				display: block;
@@ -87,6 +89,7 @@ a:focus {
 			flex: 1;
 			flex-direction: column;
 			justify-content: center;
+			transition: filter var( --app-transitionDuration );
 		}
 			#search input {
 				height: var( --app-search-input-height );
@@ -99,7 +102,7 @@ a:focus {
 				font-size: var( --app-fontSize );
 				outline: none;
 				box-sizing: border-box;
-				transition: background-color .2s;
+				transition: background-color var( --app-transitionDuration );
 			}
 			#search input:focus {
 				background-color: var( --app-search-bg-focus );
@@ -126,7 +129,7 @@ a:focus {
 			background-color: var( --app-keywords-bg );
 			font-size: var( --app-keywords-fontSize );
 			white-space: nowrap;
-			transition: background-color .2s;
+			transition: background-color var( --app-transitionDuration );
 		}
 		#keywords a:hover {
 			background-color: var( --app-keywords-bg-focus );
@@ -154,6 +157,7 @@ a:focus {
 		padding-right: var( --app-result-gsuiAudioBlock-marginLeft );
 		background-color: var( --app-result-bgColor );
 		font-size: 0;
+		transition: background-color var( --app-transitionDuration );
 	}
 		.gsuiAudioBlock {
 			position: relative;

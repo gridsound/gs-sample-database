@@ -1,8 +1,7 @@
 :root {
-	--app-bg: #3D5A68;
 	--app-fontSize: 24px;
-	--app-color: #9fb9c5;
 	--app-main-fontSize: 36px;
+	--app-transitionDuration: .2s;
 
 	--app-controls-height: 110px;
 
@@ -10,26 +9,39 @@
 
 	--app-logo-width: var( --app-controls-height );
 	--app-logo-height: 100%;
-	--app-logo-filter: invert();
 	--app-main-logo-width: 100%;
 	--app-main-logo-height: 300px;
 
-	--app-search-bg: rgba(255, 255, 255, 0.08);
-	--app-search-bg-focus: rgba(255, 255, 255, 0.1);
 	--app-search-bdRadius: 4px;
 	--app-search-input-height: 50%;
 
-	--app-keywords-bg: rgba(255, 255, 255, 0.12);
-	--app-keywords-bg-focus: rgba(255, 255, 255, 0.16);
 	--app-keywords-fontSize: 20px;
 	--app-main-keywords-width: 50%;
 	--app-main-keywords-fontSize: 30px;
 
-	--app-result-bs-top: 0 2px 2px rgba(0, 0, 0, 0.17);
-	--app-result-bs-bottom: 0 -2px 2px rgba(0, 0, 0, 0.17);
-	--app-result-bgColor: rgba(255, 255, 255, 0.03);
 	--app-result-gsuiAudioBlock-marginLeft: 10px;
 	--app-result-gsuiAudioBlock-height: 70px;
 
 	--app-selection-info: 20px;
+}
+
+:root.light {
+	--app-bg: #fff;
+}
+
+:root.dark {
+	--app-bg: #3D5A68;
+	--app-color: #9fb9c5;
+
+	--app-logo-filter: invert();
+
+	--app-search-bg: rgba(255, 255, 255, 0.08);
+	--app-search-bg-focus: rgba(255, 255, 255, 0.1);
+
+	--app-keywords-bg: rgba(255, 255, 255, 0.12);
+	--app-keywords-bg-focus: rgba(255, 255, 255, 0.16);
+
+	--app-result-bs-top: 0 2px 2px rgba(0, 0, 0, 0.17);
+	--app-result-bs-bottom: 0 -2px 2px rgba(0, 0, 0, 0.17);
+	--app-result-bgColor: rgba(255, 255, 255, 0.03);
 }
