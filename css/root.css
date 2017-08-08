@@ -27,7 +27,17 @@
 
 :root.light {
 	--app-bg: #fff;
-}
+	--app-color: #9c9c9c;
+
+	--app-search-bg: rgba(0, 0, 0, .08);
+	--app-search-bg-focus: rgba(0, 0, 0, .1);
+
+	--app-keywords-bg: rgba(0, 0, 0, .12);
+	--app-keywords-bg-focus: rgba(0, 0, 0, .16);
+
+	--app-result-bs-top: 0 2px 2px rgba(0, 0, 0, .17);
+	--app-result-bs-bottom: 0 -2px 2px rgba(0, 0, 0, .17);
+	--app-result-bgColor: rgba(0, 0, 0, .03);}
 
 :root.dark {
 	--app-bg: #3D5A68;
@@ -35,13 +45,13 @@
 
 	--app-logo-filter: invert();
 
-	--app-search-bg: rgba(255, 255, 255, 0.08);
-	--app-search-bg-focus: rgba(255, 255, 255, 0.1);
+	--app-search-bg: rgba(255, 255, 255, .08);
+	--app-search-bg-focus: rgba(255, 255, 255, .1);
 
-	--app-keywords-bg: rgba(255, 255, 255, 0.12);
-	--app-keywords-bg-focus: rgba(255, 255, 255, 0.16);
+	--app-keywords-bg: rgba(255, 255, 255, .12);
+	--app-keywords-bg-focus: rgba(255, 255, 255, .16);
 
-	--app-result-bs-top: 0 2px 2px rgba(0, 0, 0, 0.17);
-	--app-result-bs-bottom: 0 -2px 2px rgba(0, 0, 0, 0.17);
-	--app-result-bgColor: rgba(255, 255, 255, 0.03);
+	--app-result-bs-top: 0 2px 2px rgba(0, 0, 0, .17);
+	--app-result-bs-bottom: 0 -2px 2px rgba(0, 0, 0, .17);
+	--app-result-bgColor: rgba(255, 255, 255, .03);
 }
