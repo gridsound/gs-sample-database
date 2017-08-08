@@ -161,7 +161,7 @@ a:focus {
 	}
 		.gsuiAudioBlock {
 			position: relative;
-			display: inline-block;
+			display: inline-flex;
 			height: var( --app-result-gsuiAudioBlock-height );
 			width: calc( 25% - var( --app-result-gsuiAudioBlock-marginLeft ) );
 			margin: 10px 0 0 var( --app-result-gsuiAudioBlock-marginLeft );
