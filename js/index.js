@@ -1,15 +1,32 @@
 "use strict";
 
-// Use to generate gsuiAudioBlock in #result
-function generateAudioBlock( el ) {
-	var uiBlock = [],
-	i = 0;
+function removeChildren( el ) {
+	el.innerHTML = "";
+}
 
-	for ( ; i < 10; ++i ) {
-		uiBlock[ i ] = new gsuiAudioBlock();
-		uiBlock[ i ].datatype( "buffer" );
-		el.append( uiBlock[ i ].rootElement );
+function addAudioBlock( el, sample ) {
+	var uiBlock = new gsuiAudioBlock();
+
+	uiBlock.name( sample.name );
+	uiBlock.datatype( "buffer" );
+	el.append( uiBlock.rootElement );
+	return uiBlock;
+}
+
+function fillResult( samples ) {
+	var uiBlocks = [],
+		elResult = document.getElementById( "result" ),
+		i = 0;
+
+	removeChildren( elResult );
+	for ( ; i < samples.length; ++i ) {
+		uiBlocks[ i ] = addAudioBlock( elResult, samples[ i ] );
 	}
+	return uiBlocks;
+}
+
+function search( s ) {
+	fillResult( window.db.getSamples( s ) );
 }
 
 function onHashChange() {
@@ -50,9 +67,13 @@ function showPage() {
 }
 
 function gsSampleDatabase() {
+	var elForm = document.querySelector( "form" ),
+		elResult = document.getElementById( "result" );
+
 	window.onhashchange = onHashChange;
-	document.querySelector( "form" ).onsubmit = function() {
+	elForm.onsubmit = function() {
 		setHash( this.q.value );
+		search( this.q.value );
 		return false;
 	};
 	document.getElementById( "theme" ).onclick = function() {
@@ -63,9 +84,9 @@ function gsSampleDatabase() {
 		return false;
 	};
 
-	generateAudioBlock( document.getElementById( "result" ) );
 	showPage();
 	setInput();
+	search( elForm.q.value );
 	keywordsOnclick();
 }
 
