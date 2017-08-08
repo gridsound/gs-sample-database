@@ -4,23 +4,34 @@ function removeChildren( el ) {
 	el.innerHTML = "";
 }
 
-function addAudioBlock( el, sample ) {
+function addAudioBlock( ctx, el, sample ) {
 	var uiBlock = new gsuiAudioBlock();
 
-	uiBlock.name( sample.name );
-	uiBlock.datatype( "buffer" );
+	uiBlock.ondrag = function() {};
+	fetch( sample.url )
+		.then( res => res.arrayBuffer() )
+		.then( arrbuf => ctx.decodeAudioData( arrbuf ) )
+		.then( audbuf => {
+			uiBlock.datatype( "buffer" );
+			uiBlock.rootElement.onclick = function() {
+				lg( "play" );
+			}
+			uiBlock.name( sample.name );
+			uiBlock.updateData( audbuf, 0, audbuf.duration );
+		})
 	el.append( uiBlock.rootElement );
 	return uiBlock;
 }
 
 function fillResult( samples ) {
 	var uiBlocks = [],
+		ctx = new AudioContext(),
 		elResult = document.getElementById( "result" ),
 		i = 0;
 
 	removeChildren( elResult );
 	for ( ; i < samples.length; ++i ) {
-		uiBlocks[ i ] = addAudioBlock( elResult, samples[ i ] );
+		uiBlocks[ i ] = addAudioBlock( ctx, elResult, samples[ i ] );
 	}
 	return uiBlocks;
 }
