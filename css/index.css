@@ -128,8 +128,13 @@ a:focus {
 			border-radius: 15px;
 			background-color: var( --app-keywords-bg );
 			font-size: var( --app-keywords-fontSize );
-			white-space: nowrap;
 			transition: background-color var( --app-transitionDuration );
+		}
+		#keywords a:before {
+			font-family: FontAwesome;
+			content: "\f02b";
+			font-size: .7em;
+			margin-right: .3em;
 		}
 		#keywords a:hover {
 			background-color: var( --app-keywords-bg-focus );
@@ -137,10 +142,6 @@ a:focus {
 		#keywords a + a {
 			margin-left: 10px;
 		}
-			#keywords i {
-				font-size: .7em;
-				margin-right: .3em;
-			}
 			#app.main #keywords {
 				display: block;
 				width: var( --app-main-keywords-width );
