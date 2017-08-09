@@ -37,9 +37,9 @@ a:focus {
 	#controls {
 		display: flex;
 		flex-wrap: wrap;
-		height: var( --app-controls-height );
+		height: var( --controls-height );
 		box-sizing: border-box;
-		box-shadow: var( --app-result-bs-top );
+		box-shadow: var( --result-bs-top );
 		z-index: 1;
 	}
 	#app.main #controls {
@@ -60,12 +60,12 @@ a:focus {
 
 		#logo,
 		#logo a {
-			width: var( --app-logo-width );
-			height: var( --app-logo-height );
+			width: var( --logo-width );
+			height: var( --logo-height );
 		}
 		#logo {
 			background: no-repeat center url( "../assets/icon.svg" );
-			filter: var( --app-logo-filter );
+			filter: var( --logo-filter );
 			background-size: 80%;
 			transition: filter var( --app-transitionDuration );
 		}
@@ -73,15 +73,16 @@ a:focus {
 				display: block;
 			}
 		#app.main #logo {
-			width: var( --app-main-logo-width );
-			height: var( --app-main-logo-height );
-			min-height: 150px;
+			width: var( --main-logo-width );
+			height: var( --main-logo-height );
+			max-height: 300px;
 			background-size: contain;
+
 		}
 			#app.main #logo a {
 				margin: auto;
-				width: var( --app-main-logo-height );
-				height: var( --app-main-logo-width );
+				width: var( --main-logo-height );
+				height: var( --main-logo-width );
 			}
 
 		#search {
@@ -92,20 +93,20 @@ a:focus {
 			transition: filter var( --app-transitionDuration );
 		}
 			#search input {
-				height: var( --app-search-input-height );
+				height: var( --search-input-height );
 				padding: 0 .6em;
 				margin-top: 10px;
 				border: 0;
-				border-radius: var( --app-search-bdRadius );
+				border-radius: var( --search-bdRadius );
 				color: var( --app-color );
-				background-color: var( --app-search-bg );
+				background-color: var( --search-bg );
 				font-size: var( --app-fontSize );
 				outline: none;
 				box-sizing: border-box;
 				transition: background-color var( --app-transitionDuration );
 			}
 			#search input:focus {
-				background-color: var( --app-search-bg-focus );
+				background-color: var( --search-bg-focus );
 			}
 		#app.main #search {
 			flex: initial;
@@ -114,7 +115,7 @@ a:focus {
 		}
 			#app.main #search input {
 				padding: .8em .6em;
-				font-size: var( --app-main-fontSize );;
+				font-size: var( --main-fontSize );;
 			}
 
 		#keywords {
@@ -126,8 +127,8 @@ a:focus {
 		#keywords a {
 			padding: 0 .5em;
 			border-radius: 15px;
-			background-color: var( --app-keywords-bg );
-			font-size: var( --app-keywords-fontSize );
+			background-color: var( --keywords-bg );
+			font-size: var( --keywords-fontSize );
 			transition: background-color var( --app-transitionDuration );
 		}
 		#keywords a:before {
@@ -137,42 +138,42 @@ a:focus {
 			margin-right: .3em;
 		}
 		#keywords a:hover {
-			background-color: var( --app-keywords-bg-focus );
+			background-color: var( --keywords-bg-focus );
 		}
 		#keywords a + a {
 			margin-left: 10px;
 		}
 			#app.main #keywords {
 				display: block;
-				width: var( --app-main-keywords-width );
+				width: var( --main-keywords-width );
 				padding: 1em .4em 0;
 				text-align: center;
 			}
 				#app.main #keywords a {
 					text-decoration: none;
-					font-size: var( --app-main-keywords-fontSize );
+					font-size: var( --main-keywords-fontSize );
 				}
 
 	#result {
 		flex: 2.5;
-		padding-right: var( --app-result-gsuiAudioBlock-marginLeft );
-		background-color: var( --app-result-bgColor );
+		padding-right: var( --result-gsuiAudioBlock-marginLeft );
+		background-color: var( --result-bgColor );
 		font-size: 0;
 		transition: background-color var( --app-transitionDuration );
 	}
 		.gsuiAudioBlock {
 			position: relative;
 			display: inline-flex;
-			height: var( --app-result-gsuiAudioBlock-height );
-			width: calc( 25% - var( --app-result-gsuiAudioBlock-marginLeft ) );
-			margin: 10px 0 0 var( --app-result-gsuiAudioBlock-marginLeft );
+			height: var( --result-gsuiAudioBlock-height );
+			width: calc( 25% - var( --result-gsuiAudioBlock-marginLeft ) );
+			margin: 10px 0 0 var( --result-gsuiAudioBlock-marginLeft );
 		}
 
 	#selection {
 		flex: 1.8;
 		display: flex;
 		flex-direction: column;
-		box-shadow: var( --app-result-bs-bottom );
+		box-shadow: var( --result-bs-bottom );
 	}
 		#selection #info {
 			display: flex;
