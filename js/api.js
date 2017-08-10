@@ -3,13 +3,20 @@
 window.db = {
 	getSamples() {
 		return [
-			{ url: "https://gridsound.github.io/assets/demo-files/120bpm-4s.wav", name: "Kick", id: "uuid"  },
-			{ url: "https://gridsound.github.io/assets/demo-files/120bpm-4s.wav", name: "Kick 2", id: "uuid"  },
-			{ url: "https://gridsound.github.io/assets/demo-files/120bpm-4s.wav", name: "Kick 3", id: "uuid"  },
-			{ url: "https://gridsound.github.io/assets/demo-files/120bpm-4s.wav", name: "Kick 4", id: "uuid"  },
-			{ url: "https://gridsound.github.io/assets/demo-files/120bpm-4s.wav", name: "Kick 5", id: "uuid"  },
-			{ url: "https://gridsound.github.io/assets/demo-files/120bpm-4s.wav", name: "Kick 6", id: "uuid"  },
-			{ url: "https://gridsound.github.io/assets/demo-files/120bpm-4s.wav", name: "Kick 7", id: "uuid"  },
+			{ url: "assets/120bpm-4s.wav", name: "Kick", id: "uuid1"  },
+			{ url: "assets/120bpm-4s.wav", name: "Kick 2", id: "uuid2"  },
+			{ url: "assets/120bpm-4s.wav", name: "Kick 3", id: "uuid3"  },
+			{ url: "assets/120bpm-4s.wav", name: "Kick 4", id: "uuid4"  },
+			{ url: "assets/120bpm-4s.wav", name: "Kick 5", id: "uuid5"  },
+			{ url: "assets/120bpm-4s.wav", name: "Kick 6", id: "uuid6"  },
+			// { url: "assets/120bpm-4s.wav", name: "Kick 7", id: "uuid"  },
+			// { url: "assets/120bpm-4s.wav", name: "Kick 7", id: "uuid"  },
+			// { url: "assets/120bpm-4s.wav", name: "Kick 7", id: "uuid"  },
+			// { url: "assets/120bpm-4s.wav", name: "Kick 7", id: "uuid"  },
+			// { url: "assets/120bpm-4s.wav", name: "Kick 7", id: "uuid"  },
+			// { url: "assets/120bpm-4s.wav", name: "Kick 7", id: "uuid"  },
+			// { url: "assets/120bpm-4s.wav", name: "Kick 7", id: "uuid"  },
+			// { url: "assets/120bpm-4s.wav", name: "Kick 7", id: "uuid"  },
 		]
 	}
 };

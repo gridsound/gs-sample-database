@@ -74,7 +74,10 @@ function keywordsOnclick() {
 }
 
 function showPage() {
-	document.getElementById( "app" ).classList.toggle( "main", !isValidHash( location.hash ) );
+	var clApp = document.getElementById( "app" ).classList;
+	
+	clApp.toggle( "main", !isValidHash( location.hash ) );
+	clApp.toggle( "result", isValidHash( location.hash ) );
 }
 
 function gsSampleDatabase() {

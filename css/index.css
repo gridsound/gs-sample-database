@@ -1,7 +1,14 @@
+html {
+	overflow: hidden;
+}
+
+body {
+	overflow: auto;
+}
+
 html, body {
 	margin: 0;
 	height: 100%;
-	overflow: hidden;
 	font-family: sans-serif;
 }
 				
@@ -24,7 +31,9 @@ a:focus {
 #app {
 	display: flex;
 	flex-direction: column;
+	flex-wrap: nowrap;
 	height: 100%;
+	min-height: 600px;
 	background-color:  var( --app-bg );
 	color: var( --app-color );
 	font-size: var( --app-fontSize );
@@ -36,71 +45,69 @@ a:focus {
 
 	#controls {
 		display: flex;
-		flex-wrap: wrap;
-		height: var( --controls-height );
 		box-sizing: border-box;
-		box-shadow: var( --result-bs-top );
-		z-index: 1;
 	}
 	#app.main #controls {
 		flex: 1;
 		flex-direction: column;
+		flex-wrap: wrap;
+		height: initial;
+	}
+	#app.result #controls {
+		flex-wrap: nowrap;
+		height: var( --controls-height );
+		box-shadow: var( --result-bs-top );
+		z-index: 1;
 	}
 
 		#theme {
-			order: 1;
-			align-self: flex-start;
 			padding: 0.2em;
 			font-size: var( --app-fontSize );
 		}
 		#app.main #theme {
-			order: 0;
 			align-self: flex-end;
 		}
-
-		#logo,
-		#logo a {
-			width: var( --logo-width );
-			height: var( --logo-height );
+		#app.result #theme {
+			order: 1;
 		}
+
 		#logo {
 			background: no-repeat center url( "../assets/icon.svg" );
 			filter: var( --logo-filter );
-			background-size: 80%;
 			transition: filter var( --app-transitionDuration );
+			border-radius: 40%;
 		}
-			#logo a {
-				display: block;
-			}
 		#app.main #logo {
-			width: var( --main-logo-width );
-			height: var( --main-logo-height );
-			max-height: 300px;
+			width: var( --logo-size );
+			height: var( --logo-size );
+			margin-top: 1em;
+			align-self: center;
 			background-size: contain;
-
 		}
-			#app.main #logo a {
-				margin: auto;
-				width: var( --main-logo-height );
-				height: var( --main-logo-width );
-			}
+		#app.result #logo {
+			width: 100px;
+			background-size: 80%;
+		}
 
 		#search {
 			display: flex;
-			flex: 1;
 			flex-direction: column;
 			justify-content: center;
 			transition: filter var( --app-transitionDuration );
 		}
+		#app.main #search {
+			align-items: center;
+		}
+		#app.result #search {
+			flex: 1;
+			overflow: hidden;
+		}
+
 			#search input {
-				height: var( --search-input-height );
-				padding: 0 .6em;
-				margin-top: 10px;
 				border: 0;
 				border-radius: var( --search-bdRadius );
 				color: var( --app-color );
 				background-color: var( --search-bg );
-				font-size: var( --app-fontSize );
 				outline: none;
 				box-sizing: border-box;
 				transition: background-color var( --app-transitionDuration );
@@ -108,53 +115,68 @@ a:focus {
 			#search input:focus {
 				background-color: var( --search-bg-focus );
 			}
-		#app.main #search {
-			flex: initial;
-			padding-top: 1em;
-			align-items: center;
-		}
 			#app.main #search input {
+				flex: initial;
+				justify-content: initial;
+				width: var( --search-main-input-width );
+				height: initial;
+				margin-top: initial;
 				padding: .8em .6em;
-				font-size: var( --main-fontSize );;
+				font-size: var( --app-main-fontSize );;
+			}
+			#app.result #search input {
+				height: var( --search-input-height );
+				padding: 0 .6em;
+				margin-top: 10px;
+				font-size: var( --app-fontSize );
+			}
+			#app.main #search input,
+			#app.main #keywords {
+				margin-top: .5em;
 			}
 
-		#keywords {
+
+		#app.main #keywords {
+			display: block;
+			width: var( --keywords-main-width );
+			padding: 0 .4em;
+			margin-top: 1em;
+			text-align: center;
+			box-sizing: border-box;
+		}
+		#app.result #keywords {
+			flex: 1;
 			display: flex;
 			order: 2;
-			flex: 1;
 			align-items: center;
+			overflow: auto;
 		}
-		#keywords a {
-			padding: 0 .5em;
-			border-radius: 15px;
-			background-color: var( --keywords-bg );
-			font-size: var( --keywords-fontSize );
-			transition: background-color var( --app-transitionDuration );
-		}
-		#keywords a:before {
-			font-family: FontAwesome;
-			content: "\f02b";
-			font-size: .7em;
-			margin-right: .3em;
-		}
-		#keywords a:hover {
-			background-color: var( --keywords-bg-focus );
-		}
-		#keywords a + a {
-			margin-left: 10px;
-		}
-			#app.main #keywords {
-				display: block;
-				width: var( --main-keywords-width );
-				padding: 1em .4em 0;
-				text-align: center;
+			#keywords a {
+				padding: 0 .5em;
+				border-radius: 15px;
+				background-color: var( --keywords-bg );
+				font-size: var( --keywords-fontSize );
+				transition: background-color var( --app-transitionDuration );
+				text-decoration: none;
+			}
+			#keywords a:before {
+				font-family: FontAwesome;
+				content: "\f02b";
+				font-size: .7em;
+				margin-right: .3em;
+			}
+			#keywords a:hover {
+				background-color: var( --keywords-bg-focus );
+			}
+			#keywords a + a {
+				margin-left: 10px;
 			}
 				#app.main #keywords a {
-					text-decoration: none;
-					font-size: var( --main-keywords-fontSize );
+					font-size: var( --keywords-main-fontSize );
 				}
 
 	#result {
+		overflow: auto;
 		flex: 2.5;
 		padding-right: var( --result-gsuiAudioBlock-marginLeft );
 		background-color: var( --result-bgColor );
