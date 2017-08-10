@@ -3,7 +3,7 @@
 window.db = {
 	getSamples() {
 		return [
-			{ url: "assets/120bpm-4s.wav", name: "Kick", id: "uuid1"  },
+			{ url: "assets/120bpm-4s.wav", name: "KickKickKickKickKickKickKickKickKickKickKickKickKickKickKick", id: "uuid1"  },
 			{ url: "assets/120bpm-4s.wav", name: "Kick 2", id: "uuid2"  },
 			{ url: "assets/120bpm-4s.wav", name: "Kick 3", id: "uuid3"  },
 			{ url: "assets/120bpm-4s.wav", name: "Kick 4", id: "uuid4"  },

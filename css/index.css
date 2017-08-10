@@ -55,7 +55,7 @@ a:focus {
 	}
 	#app.result #controls {
 		flex-wrap: nowrap;
-		height: var( --controls-height );
+		height: var( --controls-result-height );
 		box-shadow: var( --result-bs-top );
 		z-index: 1;
 	}
@@ -78,14 +78,14 @@ a:focus {
 			border-radius: 40%;
 		}
 		#app.main #logo {
-			width: var( --logo-size );
-			height: var( --logo-size );
+			width: var( --logo-main-size );
+			height: var( --logo-main-size );
 			margin-top: 1em;
 			align-self: center;
 			background-size: contain;
 		}
 		#app.result #logo {
-			width: 100px;
+			width: var( --logo-result-width );
 			background-size: 80%;
 		}
 
@@ -125,7 +125,7 @@ a:focus {
 				font-size: var( --app-main-fontSize );;
 			}
 			#app.result #search input {
-				height: var( --search-input-height );
+				height: var( --search-result-input-height );
 				padding: 0 .6em;
 				margin-top: 10px;
 				font-size: var( --app-fontSize );
@@ -178,7 +178,7 @@ a:focus {
 	#result {
 		overflow: auto;
 		flex: 2.5;
-		padding-right: var( --result-gsuiAudioBlock-marginLeft );
+		padding: 0 var( --result-gsuiAudioBlock-marginSide );
 		background-color: var( --result-bgColor );
 		font-size: 0;
 		transition: background-color var( --app-transitionDuration );
@@ -187,8 +187,13 @@ a:focus {
 			position: relative;
 			display: inline-flex;
 			height: var( --result-gsuiAudioBlock-height );
-			width: calc( 25% - var( --result-gsuiAudioBlock-marginLeft ) );
-			margin: 10px 0 0 var( --result-gsuiAudioBlock-marginLeft );
+			width: calc( 25% - var( --result-gsuiAudioBlock-marginSide ) * 2 );
+			margin: 10px var( --result-gsuiAudioBlock-marginSide ) 0;
+		}
+		.gsuiAudioBlock.selected .gsui-head::before {
+			float: right;
+			font-family: FontAwesome;
+    		content: "\f058";
 		}
 
 	#selection {

@@ -16,13 +16,13 @@
 	}
 
 	.gsuiAudioBlock {
-		width: calc( 100% - var( --result-gsuiAudioBlock-marginLeft ) );
+		width: calc( 100% - var( --result-gsuiAudioBlock-marginSide ) * 2 );
 	}
 }
 
 @media (min-width: 560px) and (max-width: 900px) {
 	.gsuiAudioBlock {
-		width: calc( 50% - var( --result-gsuiAudioBlock-marginLeft ) );
+		width: calc( 50% - var( --result-gsuiAudioBlock-marginSide ) * 2);
 	}
 }
 

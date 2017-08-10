@@ -1,26 +1,25 @@
 :root {
 	--app-fontSize: 24px;
-	--app-main-fontSize: 36px;
 	--app-transitionDuration: .2s;
+	--app-main-fontSize: 36px;
 
-	--controls-height: 110px;
+	--controls-result-height: 110px;
 
 	--theme-width: 17px;
 
-	--logo-size: 300px;
 	--logo-height: 100%;
-	--logo-main-width: 100%;
-	--logo-main-height: 300px;
+	--logo-main-size: 300px;
+	--logo-result-width: 100px;
 
 	--search-bdRadius: 4px;
 	--search-main-input-width: 30%;
-	--search-input-height: 50%;
+	--search-result-input-height: 50%;
 
 	--keywords-fontSize: 20px;
 	--keywords-main-width: 50%;
 	--keywords-main-fontSize: 30px;
 
-	--result-gsuiAudioBlock-marginLeft: 10px;
+	--result-gsuiAudioBlock-marginSide: 5px;
 	--result-gsuiAudioBlock-height: 70px;
 
 	--selection-info: 20px;
@@ -31,14 +30,14 @@
 	--app-color: #9c9c9c;
 
 	--search-bg: rgba( 0, 0, 0, .08 );
-	--search-bg-focus: rgba(0, 0, 0, .1);
+	--search-bg-focus: rgba( 0, 0, 0, .1 );
 
-	--keywords-bg: rgba(0, 0, 0, .12);
-	--keywords-bg-focus: rgba(0, 0, 0, .16);
+	--keywords-bg: rgba( 0, 0, 0, .12 );
+	--keywords-bg-focus: rgba( 0, 0, 0, .16 );
 
-	--result-bs-top: 0 2px 2px rgba(0, 0, 0, .17);
-	--result-bs-bottom: 0 -2px 2px rgba(0, 0, 0, .17);
-	--result-bgColor: rgba(0, 0, 0, .03);
+	--result-bs-top: 0 2px 2px rgba( 0, 0, 0, .17 );
+	--result-bs-bottom: 0 -2px 2px rgba( 0, 0, 0, .17 );
+	--result-bgColor: rgba( 0, 0, 0, .03 );
 }
 
 :root.dark {
@@ -47,13 +46,13 @@
 
 	--logo-filter: invert();
 
-	--search-bg: rgba(255, 255, 255, .08);
-	--search-bg-focus: rgba(255, 255, 255, .1);
+	--search-bg: rgba( 255, 255, 255, .08 );
+	--search-bg-focus: rgba( 255, 255, 255, .1 );
 
-	--keywords-bg: rgba(255, 255, 255, .12);
-	--keywords-bg-focus: rgba(255, 255, 255, .16);
+	--keywords-bg: rgba( 255, 255, 255, .12 );
+	--keywords-bg-focus: rgba( 255, 255, 255, .16 );
 
-	--result-bs-top: 0 2px 2px rgba(0, 0, 0, .17);
-	--result-bs-bottom: 0 -2px 2px rgba(0, 0, 0, .17);
-	--result-bgColor: rgba(255, 255, 255, .03);
+	--result-bs-top: 0 2px 2px rgba( 0, 0, 0, .17 );
+	--result-bs-bottom: 0 -2px 2px rgba( 0, 0, 0, .17 );
+	--result-bgColor: rgba( 255, 255, 255, .03 );
 }
