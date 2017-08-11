@@ -12,6 +12,22 @@ function isValidHash( hash ) {
 	return hash && hash[ 0 ] === "#" && hash[ 1 ] === "/" && hash.length > 2;
 }
 
+function stop() {
+	if ( window.currABSN ) {
+		currABSN.stop();
+	}
+	return false;
+}
+
+function play( audbuf ) {
+	stop();
+	window.currABSN = ctx.createBufferSource();
+	currABSN.connect( ctx.destination );
+	currABSN.buffer = audbuf;
+	currABSN.start();
+	return false;
+}
+
 function addAudioBlock( el, sample ) {
 	var uiBlock = new gsuiAudioBlock();
 
@@ -24,9 +40,9 @@ function addAudioBlock( el, sample ) {
 			uiBlock.datatype( "buffer" );
 			uiBlock.rootElement.id = sample.id;
 			uiBlock.updateData( audbuf, 0, audbuf.duration );
-			uiBlock.rootElement.ondblclick = function() {
-				selections.toggle( uiBlock.rootElement );
-			}
+			uiBlock.rootElement.onclick = play.bind( null, audbuf );
+			uiBlock.rootElement.oncontextmenu = stop.bind( null );
+			uiBlock.rootElement.ondblclick = selections.toggle.bind( selections, uiBlock.rootElement );
 		}).then( _ => {
 			selections.isAlreadySelected( uiBlock.rootElement );
 		});
@@ -40,7 +56,6 @@ function fillResult( samples ) {
 		i = 0;
 
 	removeChildren( elResult );
-	lg( selections.content );
 	for ( ; i < samples.length; ++i ) {
 		uiBlocks[ i ] = addAudioBlock( elResult, samples[ i ] );
 	}
@@ -48,7 +63,9 @@ function fillResult( samples ) {
 }
 
 function search( s ) {
+	setHash( s );
 	fillResult( window.db.getSamples( s ) );
+	return false;
 }
 
 function switchPage() {
@@ -96,10 +113,8 @@ function gsSampleDatabase() {
 	keywordsOnclick();
 
 	elForm.onsubmit = function() {
-		setHash( this.q.value );
 		search( this.q.value );
-		return false;
-	};
+	}
 	document.getElementById( "theme" ).onclick = function() {
 		var clHtml = document.querySelector( "html" ).classList;
 
