@@ -56,7 +56,7 @@ function autoComplete( elForm ) {
 		.forEach( k => {
 			k.classList.toggle(
 				"hide",
-				!( this.value === "" || k.innerHTML.startsWith( this.value ) ) );
+				!( this.value === "" || k.innerHTML.includes( this.value.toLowerCase() ) ) );
 		});
 }
 
