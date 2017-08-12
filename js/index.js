@@ -34,18 +34,19 @@ function addAudioBlock( el, sample ) {
 	uiBlock.ondrag = function() {};
 	fetch( sample.url )
 		.then( res => res.arrayBuffer() )
-		.then( arrbuf => ctx.decodeAudioData( arrbuf ) )
-		.then( audbuf => {
-			uiBlock.name( sample.name );
-			uiBlock.datatype( "buffer" );
-			uiBlock.rootElement.id = sample.id;
-			uiBlock.updateData( audbuf, 0, audbuf.duration );
-			uiBlock.rootElement.onclick = play.bind( null, audbuf );
-			uiBlock.rootElement.oncontextmenu = stop.bind( null );
-			uiBlock.rootElement.ondblclick = selections.toggle.bind( selections, uiBlock.rootElement );
-		}).then( _ => {
-			selections.isAlreadySelected( uiBlock.rootElement );
-		});
+		.then( arrbuf => ctx.decodeAudioData( 
+			arrbuf,
+			audbuf => {
+				uiBlock.name( sample.name );
+				uiBlock.datatype( "buffer" );
+				uiBlock.rootElement.id = sample.id;
+				uiBlock.updateData( audbuf, 0, audbuf.duration );
+				uiBlock.rootElement.onclick = play.bind( null, audbuf );
+				uiBlock.rootElement.oncontextmenu = stop.bind( null );
+				uiBlock.rootElement.ondblclick = selections.toggle.bind( selections, uiBlock.rootElement );
+			})
+		)
+		.then( _ => selections.isAlreadySelected( uiBlock.rootElement ) );
 	el.append( uiBlock.rootElement );
 	return uiBlock;
 }
@@ -109,7 +110,8 @@ function gsSampleDatabase() {
 
 	window.selections = new selections();
 	window.onhashchange = onHashChange;
-	window.ctx = new AudioContext();
+	window.AudioContext = window.AudioContext || window.webkitAudioContext;
+	window.ctx = new window.AudioContext;
 	keywordsOnclick();
 
 	elForm.onsubmit = function() {
