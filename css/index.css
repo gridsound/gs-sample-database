@@ -1,33 +1,3 @@
-html {
-	overflow: hidden;
-}
-
-body {
-	overflow: auto;
-}
-
-html, body {
-	margin: 0;
-	height: 100%;
-	font-family: sans-serif;
-}
-				
-a,
-a:hover,
-a:active,
-a:visited,
-a:focus {
-	text-decoration: none; color:inherit;
-}
-
-.noselect {
-  -webkit-touch-callout: none; /* iOS Safari */
-	-webkit-user-select: none; /* Safari */
-	   -moz-user-select: none; /* Firefox */
-		-ms-user-select: none; /* Internet Explorer/Edge */
-			user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
-}
-
 #app {
 	display: flex;
 	flex-direction: column;
@@ -51,7 +21,6 @@ a:focus {
 	#app.main #controls {
 		flex: 1;
 		flex-direction: column;
-		// flex-wrap: wrap;
 		height: initial;
 	}
 	#app.result #controls {
@@ -80,7 +49,7 @@ a:focus {
 		}
 		#app.main #logo {
 			flex: .7;
-			width: 300px;
+			width: var( --logo-width );
 			max-height: var( --logo-main-maxHeight );
 			margin-top: 1em;
 			align-self: center;
@@ -138,7 +107,7 @@ a:focus {
 			}
 
 		#app #keywords {
-			overflow: auto;
+			overflow: hidden;
 		}
 		#app.main #keywords {
 			display: block;
