@@ -31,9 +31,7 @@ a:focus {
 #app {
 	display: flex;
 	flex-direction: column;
-	flex-wrap: nowrap;
 	height: 100%;
-	min-height: 600px;
 	background-color:  var( --app-bg );
 	color: var( --app-color );
 	font-size: var( --app-fontSize );
@@ -41,6 +39,9 @@ a:focus {
 }
 #app.main {
 	font-size: var( --app-main-fontSize );
+}
+#app.result {
+	flex-wrap: nowrap;
 }
 
 	#controls {
@@ -50,7 +51,7 @@ a:focus {
 	#app.main #controls {
 		flex: 1;
 		flex-direction: column;
-		flex-wrap: wrap;
+		// flex-wrap: wrap;
 		height: initial;
 	}
 	#app.result #controls {
@@ -78,8 +79,9 @@ a:focus {
 			border-radius: 40%;
 		}
 		#app.main #logo {
-			width: var( --logo-main-size );
-			height: var( --logo-main-size );
+			flex: .7;
+			width: 300px;
+			max-height: var( --logo-main-maxHeight );
 			margin-top: 1em;
 			align-self: center;
 			background-size: contain;
