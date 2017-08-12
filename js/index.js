@@ -57,7 +57,7 @@ function selectionsTabs() {
 		.forEach( ( tab, i, elTabs ) => {
 			tab.onclick = switchTabs.bind(
 				elTabs,
-				document.querySelectorAll( ".tab-page" ),
+				document.querySelectorAll( ".tab-content" ),
 				i );
 		});
 }
