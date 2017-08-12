@@ -137,7 +137,9 @@ a:focus {
 				margin-top: .5em;
 			}
 
-
+		#app #keywords {
+			overflow: auto;
+		}
 		#app.main #keywords {
 			display: block;
 			width: var( --keywords-main-width );
@@ -151,7 +153,6 @@ a:focus {
 			display: flex;
 			order: 2;
 			align-items: center;
-			overflow: auto;
 		}
 			#keywords a {
 				padding: 0 .5em;
