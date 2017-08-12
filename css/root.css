@@ -22,7 +22,7 @@
 	--result-gsuiAudioBlock-marginSide: 5px;
 	--result-gsuiAudioBlock-height: 70px;
 
-	--selection-info: 20px;
+	--selections-info-fontSize: 15px;
 }
 
 :root.light {

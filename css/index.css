@@ -160,7 +160,7 @@
 			display: inline-flex;
 			height: var( --result-gsuiAudioBlock-height );
 			width: calc( 25% - var( --result-gsuiAudioBlock-marginSide ) * 2 );
-			margin: 10px var( --result-gsuiAudioBlock-marginSide ) 0;
+			margin: 10px var( --result-gsuiAudioBlock-marginSide ) 5px;
 		}
 		.gsuiAudioBlock.selected .gsui-head::before {
 			float: right;
@@ -174,20 +174,23 @@
 		flex-direction: column;
 		box-shadow: var( --result-bs-bottom );
 	}
-		#selection #info {
-			display: flex;
-			padding: .1em .3em;
-			font-size: var( --app-selection-info );
-			font-variant: all-small-caps;
+	#info {
+		display: flex;
+		font-size: var( --selections-info-fontSize );
+		font-variant: all-small-caps;
+		font-weight: bold;
+		opacity: .5;
+		box-shadow: var( --result-bs-top );
+
+	}
+		.tab {
+			padding: .2em .4em;
+			cursor: pointer;
 		}
-		#selection #info span.title {
-			flex: 1;
+		.tab.active {
+			background-color: rgba( 255, 255, 255, .2 );
 		}
-		#selection #info span.selected_nb {
-			flex: .04;
-			text-align:right;
-		}
-		#selection #selected {
+		#selected {
 			flex: 1;
 		}
 
