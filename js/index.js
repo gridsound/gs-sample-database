@@ -12,60 +12,11 @@ function isValidHash( hash ) {
 	return hash && hash[ 0 ] === "#" && hash[ 1 ] === "/" && hash.length > 2;
 }
 
-function stop() {
-	if ( window.currABSN ) {
-		currABSN.stop();
-	}
-	return false;
-}
+function switchTheme() {
+	var clHtml = document.querySelector( "html" ).classList;
 
-function play( audbuf ) {
-	stop();
-	window.currABSN = ctx.createBufferSource();
-	currABSN.connect( ctx.destination );
-	currABSN.buffer = audbuf;
-	currABSN.start();
-	return false;
-}
-
-function addAudioBlock( el, sample ) {
-	var uiBlock = new gsuiAudioBlock();
-
-	uiBlock.ondrag = function() {};
-	fetch( sample.url )
-		.then( res => res.arrayBuffer() )
-		.then( arrbuf => ctx.decodeAudioData( 
-			arrbuf,
-			audbuf => {
-				uiBlock.name( sample.name );
-				uiBlock.datatype( "buffer" );
-				uiBlock.rootElement.id = sample.id;
-				uiBlock.updateData( audbuf, 0, audbuf.duration );
-				uiBlock.rootElement.onclick = play.bind( null, audbuf );
-				uiBlock.rootElement.oncontextmenu = stop.bind( null );
-				uiBlock.rootElement.ondblclick = selections.toggle.bind( selections, uiBlock.rootElement );
-			})
-		)
-		.then( _ => selections.isAlreadySelected( uiBlock.rootElement ) );
-	el.append( uiBlock.rootElement );
-	return uiBlock;
-}
-
-function fillResult( samples ) {
-	var uiBlocks = [],
-		elResult = document.getElementById( "result" ),
-		i = 0;
-
-	removeChildren( elResult );
-	for ( ; i < samples.length; ++i ) {
-		uiBlocks[ i ] = addAudioBlock( elResult, samples[ i ] );
-	}
-	return uiBlocks;
-}
-
-function search( s ) {
-	setHash( s );
-	fillResult( window.db.getSamples( s ) );
+	clHtml.toggle( "dark" );
+	clHtml.toggle( "light" );
 	return false;
 }
 
@@ -91,45 +42,15 @@ function onHashChange() {
 	setInput();
 }
 
-function keywordsOnclick() {
-	var elsKeywords = document.getElementById( "keywords" ).children,
-		i = 0;
-
-	for ( ; i < elsKeywords.length ; ++i ) {
-		elsKeywords[ i ].onclick = function() {
-			document.querySelector( "input" ).value = this.textContent;
-			document.querySelector( "form" ).onsubmit();
-			return false;
-		}
-	};
-}
-
 function gsSampleDatabase() {
-	var elForm = document.querySelector( "form" ),
-		elResult = document.getElementById( "result" ),
-		elInput = document.querySelector( "input" );
-
-	window.selections = new selections();
-	window.onhashchange = onHashChange;
 	window.AudioContext = window.AudioContext || window.webkitAudioContext;
+	window.onhashchange = onHashChange;
+	window.selections = new selections();
 	window.ctx = new window.AudioContext;
-	initKeyworkds();
-	keywordsOnclick();
-
-	elForm.onsubmit = function() {
-		search( this.q.value );
-	}
-	elInput.oninput = autoComplete.bind( elInput, elForm );
-	document.getElementById( "theme" ).onclick = function() {
-		var clHtml = document.querySelector( "html" ).classList;
-
-		clHtml.toggle( "dark" );
-		clHtml.toggle( "light" );
-		return false;
-	};
+	document.getElementById( "theme" ).onclick = switchTheme;
 
 	onHashChange();
-	search( elForm.q.value );
+	form.call( document.querySelector( "form" ) );
 }
 
 gsSampleDatabase();
