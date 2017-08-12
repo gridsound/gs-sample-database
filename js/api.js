@@ -9,14 +9,14 @@ window.db = {
 			{ url: "assets/DS_BassA140D-03.wav", name: "Kick 4", id: "uuid4"  },
 			{ url: "assets/120bpm-4s.wav", name: "Kick 5", id: "uuid5"  },
 			{ url: "assets/120bpm-4s.wav", name: "Kick 6", id: "uuid6"  },
-			// { url: "assets/120bpm-4s.wav", name: "Kick 7", id: "uuid"  },
-			// { url: "assets/120bpm-4s.wav", name: "Kick 7", id: "uuid"  },
-			// { url: "assets/120bpm-4s.wav", name: "Kick 7", id: "uuid"  },
-			// { url: "assets/120bpm-4s.wav", name: "Kick 7", id: "uuid"  },
-			// { url: "assets/120bpm-4s.wav", name: "Kick 7", id: "uuid"  },
-			// { url: "assets/120bpm-4s.wav", name: "Kick 7", id: "uuid"  },
-			// { url: "assets/120bpm-4s.wav", name: "Kick 7", id: "uuid"  },
-			// { url: "assets/120bpm-4s.wav", name: "Kick 7", id: "uuid"  },
+			{ url: "assets/120bpm-4s.wav", name: "Kick 7", id: "uuid"  },
+			{ url: "assets/120bpm-4s.wav", name: "Kick 7", id: "uuid"  },
+			{ url: "assets/120bpm-4s.wav", name: "Kick 7", id: "uuid"  },
+			{ url: "assets/120bpm-4s.wav", name: "Kick 7", id: "uuid"  },
+			{ url: "assets/120bpm-4s.wav", name: "Kick 7", id: "uuid"  },
+			{ url: "assets/120bpm-4s.wav", name: "Kick 7", id: "uuid"  },
+			{ url: "assets/120bpm-4s.wav", name: "Kick 7", id: "uuid"  },
+			{ url: "assets/120bpm-4s.wav", name: "Kick 7", id: "uuid"  },
 		]
 	}
 };

@@ -106,17 +106,20 @@ function keywordsOnclick() {
 
 function gsSampleDatabase() {
 	var elForm = document.querySelector( "form" ),
-		elResult = document.getElementById( "result" );
+		elResult = document.getElementById( "result" ),
+		elInput = document.querySelector( "input" );
 
 	window.selections = new selections();
 	window.onhashchange = onHashChange;
 	window.AudioContext = window.AudioContext || window.webkitAudioContext;
 	window.ctx = new window.AudioContext;
+	initKeyworkds();
 	keywordsOnclick();
 
 	elForm.onsubmit = function() {
 		search( this.q.value );
 	}
+	elInput.oninput = autoComplete.bind( elInput, elForm );
 	document.getElementById( "theme" ).onclick = function() {
 		var clHtml = document.querySelector( "html" ).classList;
 
