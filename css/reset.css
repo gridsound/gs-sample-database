@@ -30,4 +30,5 @@ a:focus {
 
 .hide {
 	display: none;
+	flex: 0;
 }

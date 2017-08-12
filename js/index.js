@@ -42,6 +42,26 @@ function onHashChange() {
 	setInput();
 }
 
+function switchTabs( elPages, curr ) {
+	for( var i = 0 ; i < this.length ; ++i ) {
+		this[ i ].classList.remove( "active" );
+		elPages[ i ].classList.remove( "active" );
+	}
+	this[ curr ].classList.add( "active" );
+	elPages[ curr ].classList.add( "active" );
+}
+
+function selectionsTabs() {
+	document
+		.querySelectorAll( ".tab" )
+		.forEach( ( tab, i, elTabs ) => {
+			tab.onclick = switchTabs.bind(
+				elTabs,
+				document.querySelectorAll( ".tab-page" ),
+				i );
+		});
+}
+
 function gsSampleDatabase() {
 	window.AudioContext = window.AudioContext || window.webkitAudioContext;
 	window.onhashchange = onHashChange;
@@ -51,6 +71,7 @@ function gsSampleDatabase() {
 
 	onHashChange();
 	form.call( document.querySelector( "form" ) );
+	selectionsTabs();
 }
 
 gsSampleDatabase();

@@ -190,9 +190,17 @@
 		.tab.active {
 			background-color: rgba( 255, 255, 255, .2 );
 		}
-		#selected {
-			flex: 1;
-		}
+	#selected {
+		background-color: red;
+	}
+	#sequencer {
+		background-color: blue;
+	}
+
+	#selected.active,
+	#sequencer.active {
+		flex: 1;
+	}
 
 	#app.main #result,
 	#app.main #selection {
