@@ -51,6 +51,8 @@ sequencer.prototype = {
 			.removeChild( this.rootElement.querySelector( '#' + id ) );
 	},
 	clear() {
+		this.rootElement.innerHTML = '';
+		this.selected = [];
 	},
 	_init() {
 		return document.getElementById( "sequencer" );

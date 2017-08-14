@@ -27,6 +27,7 @@ function switchPage() {
 	clApp.toggle( "result", isValidHash( location.hash ) );
 	if ( clApp.contains( "main" ) ){
 		selections.clear();
+		sequencer.clear();
 	}
 }
 
