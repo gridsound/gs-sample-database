@@ -65,6 +65,7 @@ function selectionsTabs() {
 function gsSampleDatabase() {
 	window.AudioContext = window.AudioContext || window.webkitAudioContext;
 	window.onhashchange = onHashChange;
+	window.sequencer = new sequencer( 4, 4 );
 	window.selections = new selections();
 	window.ctx = new window.AudioContext;
 	document.getElementById( "theme" ).onclick = switchTheme;

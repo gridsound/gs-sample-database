@@ -4,39 +4,38 @@ function selections() {
 	var root = this._init();
 
 	this.rootElement = root;
-	this.content = [];
+	this.selected = {};
 }
 
 selections.prototype = {
-	isSelected( id ) {
-		return ( this.content.indexOf( id ) !== -1 );
-	},
 	isAlreadySelected( elUiBlock ) {
-		if ( this.isSelected( elUiBlock.id ) ) {
+		if ( this.selected.hasOwnProperty( elUiBlock.id ) ) {
 				elUiBlock.classList.toggle( "selected" );
 		}
 	},
-	toggle( elUiBlock ) {
-		if ( elUiBlock.classList.contains( "selected" ) ) {
-			this.remove( elUiBlock.id );
+	toggle( uiBlock ) {
+		if ( uiBlock.rootElement.classList.contains( "selected" ) ) {
+			this.remove( uiBlock.rootElement.id );
+			sequencer.remove( uiBlock.rootElement.id );
 		} else {
-			if ( !this.isSelected( elUiBlock.id ) ) {
-				this.add( elUiBlock.cloneNode( true ) );
+			if ( !this.selected.hasOwnProperty( uiBlock.rootElement.id ) ) {
+				this.add( uiBlock );
+				sequencer.add( uiBlock.rootElement.id );
 			}
 		}
-		elUiBlock.classList.toggle( "selected" );
+		uiBlock.rootElement.classList.toggle( "selected" );
 	},
-	add( elUiBlock ) {
-		this.rootElement.appendChild( elUiBlock );
-		this.content.push( elUiBlock.id );
+	add( uiBlock ) {
+		this.rootElement.appendChild( uiBlock.rootElement.cloneNode( true ) );
+		this.selected[ uiBlock.rootElement.id ] = uiBlock;
 	},
 	remove( id ) {
 		this.rootElement.removeChild( this.rootElement.querySelector( "#" + id ) );
-		this.content.splice( this.content.indexOf( id ), 1 );
+		delete this.selected[ id ];
 	},
 	clear() {
 		this.rootElement.innerHTML = '';
-		this.content = [];
+		this.selected = [];
 	},
 	_init() {
 		return document.getElementById( "selected" );

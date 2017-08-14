@@ -25,16 +25,18 @@ function addAudioBlock( el, sample ) {
 		.then( arrbuf => ctx.decodeAudioData( 
 			arrbuf,
 			audbuf => {
+				uiBlock.data = sample;
 				uiBlock.name( sample.name );
+				uiBlock.audbuf = audbuf;
 				uiBlock.datatype( "buffer" );
 				uiBlock.rootElement.id = sample.id;
 				uiBlock.updateData( audbuf, 0, audbuf.duration );
 				uiBlock.rootElement.onclick = play.bind( null, audbuf );
 				uiBlock.rootElement.oncontextmenu = stop
-				uiBlock.rootElement.ondblclick = selections.toggle.bind( selections, uiBlock.rootElement );
+				uiBlock.rootElement.ondblclick = selections.toggle.bind( selections, uiBlock );
 			})
 		)
-		.then( _ => selections.isAlreadySelected( uiBlock.rootElement ) );
+		.then( _ => selections.isAlreadySelected( uiBlock.rootElement.id ) );
 	el.append( uiBlock.rootElement );
 	return uiBlock;
 }

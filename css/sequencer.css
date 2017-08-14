@@ -1,0 +1,47 @@
+#sequencer {
+	overflow: auto;
+}
+	#sequencer .row {
+		display: flex;
+		height: var( --sequencer-row-height );
+		border-bottom: var( --sequencer-bd );
+		background-color: var( --sequencer-bg );
+	}
+		#sequencer .row > div {
+			height: var( --sequencer-rowChild-height );
+			box-sizing: border-box;
+
+		}
+		#sequencer .title {
+			display: flex;
+			align-items: center;
+			width: var( --sequence-rowTitle-width );
+			padding: 0 .4em;
+			border-right: var( --sequencer-bdRight-separate );
+		}
+			#sequencer .title h5 {
+				overflow: hidden;
+				margin: 0;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+			}
+		#sequencer .measure {
+			flex: 1;
+			display: flex;
+			width: var( --sequence-measure-width );
+		}
+			#sequencer .beat {
+				flex: 1;
+				display: flex;
+				width: var( --sequence-measure-width );
+			}
+			#sequencer .beat:not( :last-child ) {
+				border-right: var( --sequencer-bdRight-separate );
+			}
+				#sequencer .step {
+					flex: 1;
+					height: var( --sequencer-row-height );
+				}
+				#sequencer .step:not( :last-child ) {
+					border-right: var( --sequencer-bd );
+				}
