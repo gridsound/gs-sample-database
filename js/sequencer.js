@@ -6,6 +6,7 @@ function sequencer( b, s ) {
 	this.rootElement = root;
 	this.beats( b );
 	this.steps( s );
+	this.rows = {};
 }
 
 sequencer.prototype = {
@@ -15,44 +16,48 @@ sequencer.prototype = {
 	steps( s ) {
 		this.steps = s;
 	},
-	newRow( id ) {
-		var row = document.createElement( "div" ),
-			measure = document.createElement( "div" ),
-			beat = document.createElement( "div" ),
-			title = document.createElement( "div" ),
-			h5 = document.createElement( "h5" ),
-			step = document.createElement( "div" );
+	newRow( sId ) {
+		var elRow = document.createElement( "div" ),
+			elMeasure = document.createElement( "div" ),
+			elTitle = document.createElement( "div" ),
+			elH5 = document.createElement( "h5" );
 
-		row.className = "row";
-		row.id = id;
-		title.className = "title";
-		title.onclick = play.bind( null, selections.selected[ id ].audbuf );
-		h5.textContent = selections.selected[ id ].data.name;
-		measure.className = "measure";
-		beat.className = "beat";
-		step.className = "step";
-		for ( var s = 0 ; s < this.steps ; ++s ) {
-			beat.appendChild( step.cloneNode( true ) );
-		}
-		for ( var b = 0 ; b < this.beats ; ++b ) {
-			measure.appendChild( beat.cloneNode( true ) );
-		}
+		elRow.id = sId;
+		elRow.className = "seq-row";
 
-		title.appendChild( h5 );
-		row.appendChild( title );
-		row.appendChild( measure );
-		this.rootElement.appendChild( row );
+		elTitle.className = "title";
+		elTitle.onclick = play.bind( null, selections.selected[ sId ].audbuf );
+		elH5.textContent = selections.selected[ sId ].data.name;
+		elMeasure.className = "measure";
+
+		for ( var s = 0 ; s < this.steps * this.beats ; ++s ) {
+			var elStep = document.createElement( "div" );
+
+			elStep.className = "step";
+			elStep.onclick = this.toggleStep.bind( this, elStep, sId, s );
+			elMeasure.appendChild( elStep );
+		}
+		elTitle.appendChild( elH5 );
+		elRow.appendChild( elTitle );
+		elRow.appendChild( elMeasure );
+		this.rootElement.appendChild( elRow );
 	},
-	add( id ) {
-		this.newRow( id );
+	add( sId ) {
+		this.newRow( sId );
+		this.rows[ sId ] = { steps: Array( this.steps * this.beats ).fill( 0 ) };
 	},
-	remove( id ) {
+	remove( sId ) {
 		this.rootElement
-			.removeChild( this.rootElement.querySelector( '#' + id ) );
+			.removeChild( this.rootElement.querySelector( '#' + sId ) );
+		delete this.rows[ sId ];
 	},
 	clear() {
 		this.rootElement.innerHTML = '';
 		this.selected = [];
+	},
+	toggleStep( elStep, sId, s ) {
+		elStep.classList.toggle( "active" );
+		this.rows[ sId ][ "steps" ][ s ] ^= 1;
 	},
 	_init() {
 		return document.getElementById( "sequencer" );

@@ -24,12 +24,11 @@
 
 	--selections-info-fontSize: 15px;
 
-	--sequencer-row-height: 70px;
-	--sequencer-rowChild-height: 100%;
-	--sequence-rowTitle-width: 150px;
+	--sequencer-seqRow-height: 70px;
+	--sequencer-seqRowChild-height: 100%;
+	--sequence-seqRowTitle-width: 150px;
 	--sequencer-measure-width: 100%;
-	--sequencer-bd: 2px solid var( --app-bg );
-	--sequencer-bdRight-separate: 2px solid var( --sequencer-bdRColor-separate );
+	--sequencer-step-marginLeft: 2px;
 }
 
 :root.light {
@@ -47,7 +46,6 @@
 	--result-bgColor: rgba( 0, 0, 0, .03 );
 
 	--sequencer-bg: rgba( 255, 255, 255, .2 );
-	--sequencer-bdRColor-separate: rgba( 255, 255, 255, .6 );
 }
 
 :root.dark {
@@ -67,5 +65,4 @@
 	--result-bgColor: rgba( 255, 255, 255, .03 );
 
 	--sequencer-bg: rgba( 255, 255, 255, .2 );
-	--sequencer-bdRColor-separate: rgba( 0, 0, 0, .35 );
 }

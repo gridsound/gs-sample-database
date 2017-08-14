@@ -1,47 +1,41 @@
 #sequencer {
 	overflow: auto;
 }
-	#sequencer .row {
+	.seq-row {
 		display: flex;
-		height: var( --sequencer-row-height );
+		height: var( --sequencer-seqRow-height );
 		border-bottom: var( --sequencer-bd );
-		background-color: var( --sequencer-bg );
 	}
-		#sequencer .row > div {
-			height: var( --sequencer-rowChild-height );
+		.seq-row > div {
+			height: var( --sequencer-seqRowChild-height );
 			box-sizing: border-box;
-
 		}
-		#sequencer .title {
+		.seq-row .title {
 			display: flex;
 			align-items: center;
-			width: var( --sequence-rowTitle-width );
+			width: var( --sequence-seqRowTitle-width );
 			padding: 0 .4em;
-			border-right: var( --sequencer-bdRight-separate );
+			border-right: var( --sequencer-titlebdRight-separate );
+			background-color: var( --sequencer-bg );
 		}
-			#sequencer .title h5 {
+			.seq-row .title h5 {
 				overflow: hidden;
 				margin: 0;
 				white-space: nowrap;
 				text-overflow: ellipsis;
 			}
-		#sequencer .measure {
+		.seq-row .measure {
 			flex: 1;
 			display: flex;
 			width: var( --sequence-measure-width );
 		}
-			#sequencer .beat {
+			.seq-row .step {
 				flex: 1;
-				display: flex;
-				width: var( --sequence-measure-width );
+				height: var( --sequencer-seqRow-height );
+				background-color: var( --sequencer-bg );
+				margin-left: var( --sequencer-step-marginLeft );
 			}
-			#sequencer .beat:not( :last-child ) {
-				border-right: var( --sequencer-bdRight-separate );
+			.seq-row .step.active {
+				background-color: var( --app-bg );
+				filter: saturate( 24 ) hue-rotate( 225deg );
 			}
-				#sequencer .step {
-					flex: 1;
-					height: var( --sequencer-row-height );
-				}
-				#sequencer .step:not( :last-child ) {
-					border-right: var( --sequencer-bd );
-				}
