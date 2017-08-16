@@ -72,11 +72,13 @@ samples.prototype = {
 			if ( s.id in this.bank ) {
 				this._fillAudioBlock( uiBlock, s.id );
 				this._addEventAudioBlock.call( this, uiBlock.rootElement );
+				selections.isAlreadySelected( s.id );
 			} else {
 				this._loadSample( s, uiBlock )
 					.then( _ => {
 						this._fillAudioBlock( uiBlock, s.id );
 						this._addEventAudioBlock( uiBlock.rootElement );
+						selections.isAlreadySelected( s.id );
 					});
 			}
 		});

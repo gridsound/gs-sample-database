@@ -8,15 +8,21 @@ function selections() {
 }
 
 selections.prototype = {
+	isAlreadySelected( id ) {
+		if ( this.selected.indexOf( id ) !== -1 ) {
+			search.elResult.querySelector( '#' + id ).classList.toggle( "selected" );
+		}
+	},
 	toggle( id ) {
 		if ( this.selected.indexOf( id ) === -1 ) {
 			this.add( id );
-			// sequencer.add( elUiBlock );
+			sequencer.add( id );
 		} else {
 			this.remove( id );
-			// sequencer.remove( elUiBlock );
+			sequencer.remove( id );
 		}
 		document.querySelector( "#" + id ).classList.toggle( "selected" );
+		lg( this.selected );
 	},
 	cloneElUiBlock( id ) {
 		var elClone = document.getElementById( id ).cloneNode( true );
@@ -31,7 +37,7 @@ selections.prototype = {
 	},
 	remove( id ) {
 		this.rootElement.removeChild( this.rootElement.querySelector( `#${id}.clone` ) );
-		this.selected.splice( id, 1 );
+		this.selected.splice( this.selected.indexOf( id ), 1 );
 	},
 	clear() {
 		this.rootElement.innerHTML = '';
