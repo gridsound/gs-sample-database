@@ -96,7 +96,7 @@
 				font-size: var( --app-main-fontSize );;
 			}
 			#app.result #search input {
-				height: var( --search-result-input-height );
+				flex: 1.2;
 				padding: 0 .6em;
 				margin-top: 10px;
 				font-size: var( --app-fontSize );
