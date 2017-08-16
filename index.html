@@ -10,6 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="css/reset.css">
 	<link rel="stylesheet" type="text/css" href="css/index.css">
 	<link rel="stylesheet" type="text/css" href="css/sequencer.css">
+	<link rel="stylesheet" type="text/css" href="css/gsuiAudioBlock-overide.css">
 	<link rel="stylesheet" type="text/css" href="css/responsive.css">
 	<script type="text/javascript">function lg( a ) { return console.log.apply( console, arguments ), a; }</script>
 </head>
@@ -27,31 +28,36 @@
 	<div id="result" class="gsui-nocrop"></div>
 	<div id="selection">
 		<div id="info">
-			<span class="tab noselect ">Selections <span class="selected_nb">(0)</span></span>
-			<span class="tab noselect active">Sequencer</span>
+			<span class="tab noselect active">Selections <span class="selected_nb">(0)</span></span>
+			<span class="tab noselect">Sequencer</span>
 		</div>
-		<div id="selected" class="tab-content "></div>
-		<div id="sequencer" class="tab-content active"></div>
+		<div id="selected" class="tab-content active"></div>
+		<div class="sequencer tab-content">
+			<div class="seq-menu">
+				<span class="seq-btn play"></span>
+			</div>
+			<div class="seq-rows"></div>
+		</div>
 	</div>
 </div>
 
 <template id="gsuiAudioBlock">
 	<div class="gsuiAudioBlock">
-		<div class="gsui-bg"></div>
-		<div class="gsui-head">
-			<span class="gsui-name"></span>
+		<div class="gsuiab-bg"></div>
+		<div class="gsuiab-head">
+			<span class="gsuiab-name"></span>
 		</div>
-		<div class="gsui-content"></div>
-		<div class="gsui-crop gsui-a"></div>
-		<div class="gsui-crop gsui-b"></div>
+		<div class="gsuiab-content"></div>
+		<div class="gsuiab-crop gsuiab-cropA"></div>
+		<div class="gsuiab-crop gsuiab-cropB"></div>
 	</div>
 </template>
 
 <script type="text/javascript" src="https://gridsound.github.io/gs-ui-components/gsuiAudioBlock/gsuiAudioBlock.js"></script>
 <script type="text/javascript" src="https://gridsound.github.io/gs-ui-components/gsuiWaveform/gsuiWaveform.js"></script>
 <script type="text/javascript" src="js/api.js"></script>
-<script type="text/javascript" src="js/audio.js"></script>
-<script type="text/javascript" src="js/form.js"></script>
+<script type="text/javascript" src="js/samples.js"></script>
+<script type="text/javascript" src="js/search.js"></script>
 <script type="text/javascript" src="js/sequencer.js"></script>
 <script type="text/javascript" src="js/selections.js"></script>
 <script type="text/javascript" src="js/index.js"></script>

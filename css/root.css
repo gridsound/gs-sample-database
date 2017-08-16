@@ -28,7 +28,7 @@
 	--sequencer-seqRowChild-height: 100%;
 	--sequence-seqRowTitle-width: 150px;
 	--sequencer-measure-width: 100%;
-	--sequencer-step-marginLeft: 2px;
+	--sequencer-step-margin: 2px;
 }
 
 :root.light {

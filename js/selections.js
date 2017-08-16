@@ -4,40 +4,40 @@ function selections() {
 	var root = this._init();
 
 	this.rootElement = root;
-	this.selected = {};
+	this.selected = [];
 }
 
 selections.prototype = {
-	isAlreadySelected( elUiBlock ) {
-		if ( this.selected.hasOwnProperty( elUiBlock.id ) ) {
-				elUiBlock.classList.toggle( "selected" );
-		}
-	},
-	toggle( uiBlock ) {
-		if ( uiBlock.rootElement.classList.contains( "selected" ) ) {
-			this.remove( uiBlock.rootElement.id );
-			sequencer.remove( uiBlock.rootElement.id );
+	toggle( id ) {
+		if ( this.selected.indexOf( id ) === -1 ) {
+			this.add( id );
+			// sequencer.add( elUiBlock );
 		} else {
-			if ( !this.selected.hasOwnProperty( uiBlock.rootElement.id ) ) {
-				this.add( uiBlock );
-				sequencer.add( uiBlock.rootElement.id );
-			}
+			this.remove( id );
+			// sequencer.remove( elUiBlock );
 		}
-		uiBlock.rootElement.classList.toggle( "selected" );
+		document.querySelector( "#" + id ).classList.toggle( "selected" );
 	},
-	add( uiBlock ) {
-		this.rootElement.appendChild( uiBlock.rootElement.cloneNode( true ) );
-		this.selected[ uiBlock.rootElement.id ] = uiBlock;
+	cloneElUiBlock( id ) {
+		var elClone = window[ id ].cloneNode( true );
+
+		elClone.classList.add( "clone", "selected" );
+		samples._addEventAudioBlock( elClone );
+		return elClone;
+	},
+	add( id ) {
+		this.rootElement.appendChild( this.cloneElUiBlock( id ) );
+		this.selected.push( id );
 	},
 	remove( id ) {
-		this.rootElement.removeChild( this.rootElement.querySelector( "#" + id ) );
-		delete this.selected[ id ];
+		this.rootElement.removeChild( this.rootElement.querySelector( `#${id}.clone` ) );
+		this.selected.splice( id, 1 );
 	},
 	clear() {
 		this.rootElement.innerHTML = '';
 		this.selected = [];
 	},
 	_init() {
-		return document.getElementById( "selected" );
+		return window[ "selected" ];
 	}
 };

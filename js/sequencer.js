@@ -4,9 +4,10 @@ function sequencer( b, s ) {
 	var root = this._init();
 
 	this.rootElement = root;
+	this.rootElement.seqRows = this.rootElement.querySelector( ".seq-rows" );
 	this.beats( b );
 	this.steps( s );
-	this.rows = {};
+	this.pattern = {};
 }
 
 sequencer.prototype = {
@@ -16,50 +17,53 @@ sequencer.prototype = {
 	steps( s ) {
 		this.steps = s;
 	},
-	newRow( sId ) {
+	newRow( id ) {
 		var elRow = document.createElement( "div" ),
 			elMeasure = document.createElement( "div" ),
 			elTitle = document.createElement( "div" ),
-			elH5 = document.createElement( "h5" );
+			elH5 = document.createElement( "h5" ),
+			sName = samples.bank[ id ][ "name" ];
 
-		elRow.id = sId;
+		elRow.id = id;
 		elRow.className = "seq-row";
-
 		elTitle.className = "title";
-		elTitle.onclick = play.bind( null, selections.selected[ sId ].audbuf );
-		elH5.textContent = selections.selected[ sId ].data.name;
+		elH5.textContent = sName;
 		elMeasure.className = "measure";
+
+		elTitle.onclick = samples.play.bind( samples, id );
 
 		for ( var s = 0 ; s < this.steps * this.beats ; ++s ) {
 			var elStep = document.createElement( "div" );
 
 			elStep.className = "step";
-			elStep.onclick = this.toggleStep.bind( this, elStep, sId, s );
+			elStep.onclick = this.toggleStep.bind( this, elStep, id, s );
 			elMeasure.appendChild( elStep );
 		}
 		elTitle.appendChild( elH5 );
 		elRow.appendChild( elTitle );
 		elRow.appendChild( elMeasure );
-		this.rootElement.appendChild( elRow );
+		this.rootElement.seqRows.appendChild( elRow );
 	},
-	add( sId ) {
-		this.newRow( sId );
-		this.rows[ sId ] = { steps: Array( this.steps * this.beats ).fill( 0 ) };
+	add( id ) {
+		this.newRow( id );
+		this.pattern[ id ] = Array( this.steps * this.beats ).fill( 0 );
 	},
-	remove( sId ) {
+	remove( id ) {
 		this.rootElement
-			.removeChild( this.rootElement.querySelector( '#' + sId ) );
-		delete this.rows[ sId ];
+			.seqRows
+			.removeChild( this.rootElement.querySelector( '#' + id ) );
+		delete this.pattern[ id ];
 	},
 	clear() {
 		this.rootElement.innerHTML = '';
 		this.selected = [];
 	},
-	toggleStep( elStep, sId, s ) {
+	toggleStep( elStep, id, s ) {
 		elStep.classList.toggle( "active" );
-		this.rows[ sId ][ "steps" ][ s ] ^= 1;
+		this.pattern[ id ][ s ] ^= 1;
+		lg( this.pattern );
 	},
 	_init() {
-		return document.getElementById( "sequencer" );
+		return document.querySelector( ".sequencer" );
 	}
 };

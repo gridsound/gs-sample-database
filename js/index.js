@@ -23,24 +23,15 @@ function switchTheme() {
 function switchPage() {
 	var clApp = document.getElementById( "app" ).classList;
 	
-	clApp.toggle( "main", !isValidHash( location.hash ) );
 	clApp.toggle( "result", isValidHash( location.hash ) );
-	if ( clApp.contains( "main" ) ){
+	clApp.toggle( "main", !isValidHash( location.hash ) );
+	if ( isValidHash( location.hash ) ) {
+		window.search.setInput( location.hash.replace( /\+/g, " " ).substring( 2 ) );
+	} else {
 		selections.clear();
 		sequencer.clear();
+		window.search.setInput( "" );
 	}
-}
-
-function setInput() {
-	document.querySelector( "input" ).value =
-		isValidHash( location.hash )
-			? location.hash.replace( /\+/g, " " ).substring( 2 )
-			: "";
-}
-
-function onHashChange() {
-	switchPage();
-	setInput();
 }
 
 function switchTabs( elPages, curr ) {
@@ -65,15 +56,22 @@ function selectionsTabs() {
 
 function gsSampleDatabase() {
 	window.AudioContext = window.AudioContext || window.webkitAudioContext;
-	window.onhashchange = onHashChange;
-	window.sequencer = new sequencer( 4, 4 );
+	window.onhashchange = switchPage;
+	window.search = new search(
+		document.querySelector( "form" ),
+		document.querySelector( "input" ),
+		document.getElementById( "keywords" ),
+		document.getElementById( "result" )
+	);
+	window.samples = new samples();
 	window.selections = new selections();
+	window.sequencer = new sequencer( 4, 4 );
 	window.ctx = new window.AudioContext;
 	document.getElementById( "theme" ).onclick = switchTheme;
 
-	onHashChange();
-	form.call( document.querySelector( "form" ) );
+	switchPage();
 	selectionsTabs();
+	isValidHash( location.hash ) && window.search._evt_send();
 }
 
 gsSampleDatabase();

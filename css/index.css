@@ -155,18 +155,7 @@
 		font-size: 0;
 		transition: background-color var( --app-transitionDuration );
 	}
-		.gsuiAudioBlock {
-			position: relative;
-			display: inline-flex;
-			height: var( --result-gsuiAudioBlock-height );
-			width: calc( 25% - var( --result-gsuiAudioBlock-marginSide ) * 2 );
-			margin: 10px var( --result-gsuiAudioBlock-marginSide ) 5px;
-		}
-		.gsuiAudioBlock.selected .gsui-head::before {
-			float: right;
-			font-family: FontAwesome;
-    		content: "\f058";
-		}
+
 
 	#selection {
 		flex: 1.8;
@@ -191,13 +180,12 @@
 			background-color: rgba( 255, 255, 255, .2 );
 		}
 	#selected,
-	#sequencer {
+	.sequencer {
 		flex: 0;
 		display: none;
 	}
 
-	#selected.active,
-	#sequencer.active {
+	#selected.active {
 		flex: 1;
 		display: block;
 	}
