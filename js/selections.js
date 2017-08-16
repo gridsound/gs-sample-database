@@ -22,7 +22,6 @@ selections.prototype = {
 			sequencer.remove( id );
 		}
 		document.querySelector( "#" + id ).classList.toggle( "selected" );
-		lg( this.selected );
 	},
 	cloneElUiBlock( id ) {
 		var elClone = document.getElementById( id ).cloneNode( true );

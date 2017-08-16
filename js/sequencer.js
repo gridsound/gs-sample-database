@@ -61,7 +61,6 @@ sequencer.prototype = {
 	toggleStep( elStep, id, s ) {
 		elStep.classList.toggle( "active" );
 		this.pattern[ id ][ s ] ^= 1;
-		lg( this.pattern );
 	},
 	_init() {
 		return document.querySelector( ".sequencer" );
