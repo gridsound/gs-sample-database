@@ -19,7 +19,7 @@ selections.prototype = {
 		document.querySelector( "#" + id ).classList.toggle( "selected" );
 	},
 	cloneElUiBlock( id ) {
-		var elClone = window[ id ].cloneNode( true );
+		var elClone = document.getElementById( id ).cloneNode( true );
 
 		elClone.classList.add( "clone", "selected" );
 		samples._addEventAudioBlock( elClone );
@@ -38,6 +38,6 @@ selections.prototype = {
 		this.selected = [];
 	},
 	_init() {
-		return window[ "selected" ];
+		return document.getElementById( "selected" );
 	}
 };
