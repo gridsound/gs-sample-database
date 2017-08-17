@@ -1,15 +1,26 @@
 "use strict";
 
-window.db = {
-	getSamples() {
-		return [
-			{ url: "assets/120bpm-4s.wav", name: "KickKickKickKickKickKickKickKickKickKickKickKickKickKickKick", id: "uuid1"  },
-			{ url: "assets/DS_BassA140D-01.wav", name: "Kick 2", id: "uuid2"  },
-			{ url: "assets/DS_BassA140D-02.wav", name: "Kick 3", id: "uuid3"  },
-			{ url: "assets/DS_BassA140D-03.wav", name: "Kick 4", id: "uuid4"  },
-			{ url: "assets/120bpm-4s.wav", name: "Kick 5", id: "uuid5"  },
-			{ url: "assets/120bpm-4s.wav", name: "Kick 6", id: "uuid6"  },
-			{ url: "assets/120bpm-4s.wav", name: "Kick 7", id: "uuid"  }
-		]
+var config = {
+		apiKey: "AIzaSyBc3nuDxk9rn0SNe6Bkj5fyZI8IKk0m4m8",
+		authDomain: "gridsound-111f5.firebaseapp.com",
+		databaseURL: "https://gridsound-111f5.firebaseio.com",
+		projectId: "gridsound-111f5",
+		storageBucket: "gridsound-111f5.appspot.com",
+		messagingSenderId: "1063806749469"
+};
+
+window.firebase.defaultApp = firebase.initializeApp(config);
+window.firebase.defaultStorage = firebase.storage();
+window.firebase.storageRef = window.firebase.defaultStorage.ref();
+
+window.api = {
+	cloudStorageDownload( search, fct ) {
+		return Promise.all( window.db[ search ].map( s => {
+			return window.firebase
+				.storageRef
+				.child( `${search}/${s}` )
+				[fct]();
+			})
+		);
 	}
 };

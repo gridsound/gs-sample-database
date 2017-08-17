@@ -6,21 +6,6 @@ function samples() {
 }
 
 samples.prototype = {
-	_loadSample( s ) {
-		return fetch( s.url )
-			.then( res => res.arrayBuffer() )
-			.then( arrbuf => {
-				return new Promise( ( resolve, reject ) => {
-					ctx.decodeAudioData(
-						arrbuf,
-						audbuf => {
-							this.bank[ s.id ] = s;
-							this.bank[ s.id ][ "buffer" ] = audbuf;
-							resolve( audbuf ); },
-						reject );
-				});
-			});
-	},
 	_newAudioBlock( id, name ) {
 		var uiBlock = new gsuiAudioBlock();
 
@@ -64,23 +49,42 @@ samples.prototype = {
 		this.currABSN && this.currABSN.stop();
 		return false;
 	},
-	loadSamples( el, samples ) {
-		samples.forEach( s => {
-			var uiBlock = this._newAudioBlock( s.id, s.name );
+	_loadSample( url ) {
+		return fetch( url )
+			.then( res => res.arrayBuffer() )
+			.then( arrbuf => {
+				return new Promise( ( resolve, reject ) => {
+					ctx.decodeAudioData(
+						arrbuf,
+						audbuf => {
+							resolve( audbuf );
+						},
+						reject );
+				});
+			});
+	},
+	loadSamples( el, pMetaData ) {
+		pMetaData && pMetaData.then( ( metaData ) => {
+			metaData.forEach( metaDatum => {
+				var url = metaDatum.downloadURLs[ 0 ];
+				var token = url.substring( url.indexOf( "token=" ) + "token=".length , url.length );
+				var uiBlock = this._newAudioBlock( token, metaDatum.name );
 
-			el.appendChild( uiBlock.rootElement );
-			if ( s.id in this.bank ) {
-				this._fillAudioBlock( uiBlock, s.id );
-				this._addEventAudioBlock.call( this, uiBlock.rootElement );
-				selections.isAlreadySelected( s.id );
-			} else {
-				this._loadSample( s, uiBlock )
-					.then( _ => {
-						this._fillAudioBlock( uiBlock, s.id );
+				el.appendChild( uiBlock.rootElement );
+				if ( token in this.bank ) {
+					this._fillAudioBlock( uiBlock, token );
+					this._addEventAudioBlock( uiBlock.rootElement );
+					selections.isAlreadySelected( token );
+				} else {
+					this._loadSample( url ).then( audbuf => {
+						this.bank[ token ] = metaDatum;
+						this.bank[ token ][ "buffer" ] = audbuf;
+						this._fillAudioBlock( uiBlock, token );
 						this._addEventAudioBlock( uiBlock.rootElement );
-						selections.isAlreadySelected( s.id );
+						selections.isAlreadySelected( token );
 					});
-			}
+				}
+			});
 		});
 	}
 };

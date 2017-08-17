@@ -56,12 +56,16 @@ search.prototype = {
 	},
 	_evt_send( e ) {
 		e && e.preventDefault();
+		window.db.hasOwnProperty( this.elInput.value ) &&
+			samples.loadSamples.call(
+				samples,
+				document.getElementById( "result" ),
+				window.api.cloudStorageDownload( this.elInput.value, "getMetadata" ) );
+		// else {
+		// 	// no result found
+		// }
 		setHash( this.elInput.value );
 		this._clearResult();
-		samples.loadSamples.call(
-			samples,
-			document.getElementById( "result" ),
-			window.db.getSamples( this.value ) );
 		return false;
 	},
 	_evt_keywordsOnclick( query ) {
