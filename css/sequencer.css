@@ -4,10 +4,20 @@
 	flex-direction: column;
 }
 	.seq-menu {
-		min-height: 40px;
+		display: flex;
+		align-items: center;
+		height: 40px;
 	}
 		.seq-btn {
-
+			width: 40px;
+			height: 100%;
+			padding: 5px 0;
+			text-align: center;
+			cursor: pointer;
+			box-sizing: border-box;
+		}
+		.seq-btn:hover {
+			background-color: rgba( 255, 255, 255, .3 );
 		}
 		.seq-btn.play::before {
 			font-family: FontAwesome;
