@@ -15,8 +15,8 @@ samples.prototype = {
 		return uiBlock;
 	},
 	_fillAudioBlock( uiBlock, id ){
-		if ( this.bank.id.waBuf ) {
-			var waBuf = this.bank.id.waBuf;
+		if ( this.bank[ id ].waBuf ) {
+			var waBuf = this.bank[ id ].waBuf;
 
 			uiBlock.waBuf = waBuf;
 			uiBlock.updateData( waBuf.buffer );
@@ -42,7 +42,7 @@ samples.prototype = {
 	},
 	play( id, when ) {
 		this.stop();
-		this.currWaBuff = this.bank.id.waBuf;
+		this.currWaBuff = this.bank[ id ].waBuf;
 		this.currWaBuff.start(); // this.currWaBuff.start( when || 0 );
 		document.getElementById( id ).gsuiAudioBlock.start();
 		selections.selected.indexOf( id ) !== -1 &&
@@ -60,8 +60,8 @@ samples.prototype = {
 		waBuf.setContext( window.ctx );
 		waBuf.connect( window.ctx.destination );
 		waBuf.load( url ).then( _ => {
-			this.bank.id = sampleData;
-			this.bank.id.waBuf = waBuf;
+			this.bank[ id ] = sampleData;
+			this.bank[ id ].waBuf = waBuf;
 			this._fillAudioBlock( uiBlock, id );
 			this._addEventAudioBlock( uiBlock.rootElement );
 			selections.isAlreadySelected( id );

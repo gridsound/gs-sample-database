@@ -48,7 +48,7 @@ sequencer.prototype = {
 			elMeasure = document.createElement( "div" ),
 			elTitle = document.createElement( "div" ),
 			elH5 = document.createElement( "h5" ),
-			sName = samples.bank.id.name;
+			sName = samples.bank[ id ].name;
 
 		elRow.setAttribute( "data-id", id );
 		elRow.className = "seq-row";

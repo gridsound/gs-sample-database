@@ -29,7 +29,7 @@ selections.prototype = {
 		this.selectedNb( this.selected.length );
 	},
 	cloneElUiBlock( id ) {
-		var uiBlock = samples._newAudioBlock( id, samples.bank.id.name );
+		var uiBlock = samples._newAudioBlock( id, samples.bank[ id ].name );
 
 		uiBlock.rootElement.setAttribute( "data-id", id );
 		uiBlock.rootElement.classList.add( "selected" );
