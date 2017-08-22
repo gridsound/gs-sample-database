@@ -4,7 +4,7 @@ function sequencer( b, s ) {
 	var root = this._init();
 
 	this.rootElement = root;
-	this.rootElement.seqRows = this.rootElement.querySelector( ".seq-rows" );
+	this.rootElement.seqRows = document.getElementById( "seq-rows" );
 	this.beats( b );
 	this.steps( s );
 	this.pattern = {};
@@ -55,7 +55,7 @@ sequencer.prototype = {
 		delete this.pattern[ id ];
 	},
 	clear() {
-		this.rootElement.innerHTML = '';
+		this.rootElement.seqRows.innerHTML = '';
 		this.selected = [];
 	},
 	toggleStep( elStep, id, s ) {

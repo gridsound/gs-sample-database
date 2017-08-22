@@ -13,7 +13,7 @@
 			font-family: FontAwesome;
 			content: "\f04b";
 		}
-	.seq-rows {
+	#seq-rows {
 		overflow: auto;
 		flex: 1;
 	}
