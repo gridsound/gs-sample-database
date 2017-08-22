@@ -24,7 +24,7 @@ sequencer.prototype = {
 			elH5 = document.createElement( "h5" ),
 			sName = samples.bank[ id ][ "name" ];
 
-		elRow.id = id;
+		elRow.setAttribute( "data-id", id );
 		elRow.className = "seq-row";
 		elTitle.className = "title";
 		elH5.textContent = sName;
@@ -51,7 +51,7 @@ sequencer.prototype = {
 	remove( id ) {
 		this.rootElement
 			.seqRows
-			.removeChild( this.rootElement.querySelector( '#' + id ) );
+			.removeChild( this.rootElement.querySelector( `[data-id="${id}"]` ) );
 		delete this.pattern[ id ];
 	},
 	clear() {
