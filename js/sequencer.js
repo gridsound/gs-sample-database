@@ -8,6 +8,10 @@ function sequencer( b, s ) {
 	this.beats( b );
 	this.steps( s );
 	this.pattern = {};
+	this.uiSlider = new gsuiSlider();
+	document.getElementById( "sliderWrap" ).appendChild( this.uiSlider.rootElement );
+	this.uiSlider.resize( 150, 24 );
+	this.uiSlider.options( { min: 10, max: 240, step: 1, value: 120 } );
 }
 
 sequencer.prototype = {
@@ -22,7 +26,7 @@ sequencer.prototype = {
 			elMeasure = document.createElement( "div" ),
 			elTitle = document.createElement( "div" ),
 			elH5 = document.createElement( "h5" ),
-			sName = samples.bank[ id ][ "name" ];
+			sName = samples.bank.id.name;
 
 		elRow.setAttribute( "data-id", id );
 		elRow.className = "seq-row";
@@ -46,13 +50,13 @@ sequencer.prototype = {
 	},
 	add( id ) {
 		this.newRow( id );
-		this.pattern[ id ] = Array( this.steps * this.beats ).fill( 0 );
+		this.pattern.id = Array( this.steps * this.beats ).fill( 0 );
 	},
 	remove( id ) {
 		this.rootElement
 			.seqRows
 			.removeChild( this.rootElement.querySelector( `[data-id="${id}"]` ) );
-		delete this.pattern[ id ];
+		delete this.pattern.id;
 	},
 	clear() {
 		this.rootElement.seqRows.innerHTML = '';
@@ -60,7 +64,7 @@ sequencer.prototype = {
 	},
 	toggleStep( elStep, id, s ) {
 		elStep.classList.toggle( "active" );
-		this.pattern[ id ][ s ] ^= 1;
+		this.pattern.id.s ^= 1;
 	},
 	_init() {
 		return document.querySelector( ".sequencer" );

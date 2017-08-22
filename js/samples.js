@@ -2,7 +2,7 @@
 
 function samples() {
 	this.bank = {};
-	this.currABSN = null;
+	this.currWaBuff = null;
 }
 
 samples.prototype = {
@@ -15,11 +15,11 @@ samples.prototype = {
 		return uiBlock;
 	},
 	_fillAudioBlock( uiBlock, id ){
-		if ( this.bank[ id ][ "buffer" ] ) {
-			var audbuf = this.bank[ id ][ "buffer" ];
+		if ( this.bank.id.waBuf ) {
+			var waBuf = this.bank.id.waBuf;
 
-			uiBlock.audbuf = audbuf;
-			uiBlock.updateData( audbuf );
+			uiBlock.waBuf = waBuf;
+			uiBlock.updateData( waBuf.buffer );
 			uiBlock.rootElement.oncontextmenu = this.stop.bind( this );
 		}
 	},
@@ -42,10 +42,8 @@ samples.prototype = {
 	},
 	play( id, when ) {
 		this.stop();
-		this.currABSN = ctx.createBufferSource();
-		this.currABSN.connect( ctx.destination );
-		this.currABSN.buffer = this.bank[ id ][ "buffer" ];
-		this.currABSN.start(); // this.currABSN.start( when || 0 );
+		this.currWaBuff = this.bank.id.waBuf;
+		this.currWaBuff.start(); // this.currWaBuff.start( when || 0 );
 		document.getElementById( id ).gsuiAudioBlock.start();
 		selections.selected.indexOf( id ) !== -1 &&
 			selections.rootElement
@@ -53,29 +51,28 @@ samples.prototype = {
 				.gsuiAudioBlock.start();
 	},
 	stop() {
-		this.currABSN && this.currABSN.stop();
+		this.currWaBuff && this.currWaBuff.stop();
 		return false;
 	},
-	_loadSample( url ) {
-		return fetch( url )
-			.then( res => res.arrayBuffer() )
-			.then( arrbuf => {
-				return new Promise( ( resolve, reject ) => {
-					ctx.decodeAudioData(
-						arrbuf,
-						audbuf => {
-							resolve( audbuf );
-						},
-						reject );
-				});
-			});
+	loadSample( sampleData, url, id, uiBlock ) {
+		var waBuf = new gswaBuffer();
+
+		waBuf.setContext( window.ctx );
+		waBuf.connect( window.ctx.destination );
+		waBuf.load( url ).then( _ => {
+			this.bank.id = sampleData;
+			this.bank.id.waBuf = waBuf;
+			this._fillAudioBlock( uiBlock, id );
+			this._addEventAudioBlock( uiBlock.rootElement );
+			selections.isAlreadySelected( id );
+		});
 	},
-	loadSamples( el, pMetaData ) {
-		pMetaData && pMetaData.then( ( metaData ) => {
-			metaData.forEach( metaDatum => {
-				var url = metaDatum.downloadURLs[ 0 ];
+	loadSamples( el, data ) {
+		data && data.then( ( metaData ) => {
+			metaData.forEach( sampleData => {
+				var url = sampleData.downloadURLs[ 0 ];
 				var token = url.substring( url.indexOf( "token=" ) + "token=".length , url.length );
-				var uiBlock = this._newAudioBlock( token, metaDatum.name );
+				var uiBlock = this._newAudioBlock( token, sampleData.name );
 
 				el.appendChild( uiBlock.rootElement );
 				if ( token in this.bank ) {
@@ -83,13 +80,7 @@ samples.prototype = {
 					this._addEventAudioBlock( uiBlock.rootElement );
 					selections.isAlreadySelected( token );
 				} else {
-					this._loadSample( url ).then( audbuf => {
-						this.bank[ token ] = metaDatum;
-						this.bank[ token ][ "buffer" ] = audbuf;
-						this._fillAudioBlock( uiBlock, token );
-						this._addEventAudioBlock( uiBlock.rootElement );
-						selections.isAlreadySelected( token );
-					});
+					this.loadSample( sampleData, url, token, uiBlock );
 				}
 			});
 		});

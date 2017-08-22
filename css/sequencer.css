@@ -17,15 +17,19 @@
 			box-sizing: border-box;
 		}
 		.seq-btn:hover {
-			background-color: rgba( 255, 255, 255, .3 );
+			background-color: var( --sequencer-menu-btnhover );
 		}
 		.seq-btn.play::before {
 			font-family: FontAwesome;
 			content: "\f04b";
 		}
+		.seq-menu .gsuiSlider.gsui-linear {
+			background: var( --sequencer-gsuiSlider-bg );
+		}
 	#seq-rows {
 		overflow: auto;
 		flex: 1;
+		background-color: var( --sequencer-row );
 	}
 		.seq-row {
 			display: flex;
@@ -39,7 +43,7 @@
 			.seq-row .title {
 				display: flex;
 				align-items: center;
-				width: var( --sequence-seqRowTitle-width );
+				width: var( --sequencer-seqRowTitle-width );
 				padding: 0 .4em;
 				border-right: var( --sequencer-titlebdRight-separate );
 				background-color: var( --sequencer-bg );

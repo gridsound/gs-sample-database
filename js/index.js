@@ -54,6 +54,15 @@ function selectionsTabs() {
 		});
 }
 
+// Compatibility Safari
+gswaBuffer.prototype._setDataFromArrayBuffer = function( arrayBuffer ) {
+	return new Promise( ( res, rej ) => {
+		this.ctx.decodeAudioData( arrayBuffer, audioBuffer => {
+			res( this._setDataFromAudioBuffer( audioBuffer ) );
+		}, rej );
+	} );
+};
+
 function gsSampleDatabase() {
 	window.AudioContext = window.AudioContext || window.webkitAudioContext;
 	window.onhashchange = switchPage;

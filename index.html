@@ -14,9 +14,10 @@
 	<meta property="og:image:height" content="400"/>
 	<link rel="manifest" href="manifest.json"/>
 	<link rel="shortcut icon" href="assets/favicon.png"/>
-	<link rel="stylesheet" type="text/css" href="css/root.css">
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 	<link rel="stylesheet" type="text/css" href="https://gridsound.github.io/gs-ui-components/gsuiAudioBlock/gsuiAudioBlock.css">
+	<link rel="stylesheet" type="text/css" href="https://gridsound.github.io/gs-ui-components/gsuiSlider/gsuiSlider.css">
+	<link rel="stylesheet" type="text/css" href="css/root.css">
 	<link rel="stylesheet" type="text/css" href="css/reset.css">
 	<link rel="stylesheet" type="text/css" href="css/index.css">
 	<link rel="stylesheet" type="text/css" href="css/sequencer.css">
@@ -45,6 +46,7 @@
 		<div class="sequencer tab-content">
 			<div class="seq-menu">
 				<span class="seq-btn play"></span>
+				<div id="sliderWrap"></div>
 			</div>
 			<div id="seq-rows"></div>
 		</div>
@@ -63,11 +65,29 @@
 	</div>
 </template>
 
+<template id="gsuiSlider">
+	<div class="gsuiSlider">
+		<input type="range"/>
+		<div class="gsui-line">
+			<div class="gsui-lineColor"></div>
+			<div class="gsui-thumb"></div>
+		</div>
+		<svg>
+			<circle class="gsui-svgBg" cx="50%" cy="50%"/>
+			<circle class="gsui-svgLine" cx="50%" cy="50%"/>
+			<circle class="gsui-svgLineColor" cx="50%" cy="50%"/>
+			<circle class="gsui-svgThumb" cx="50%" cy="50%"/>
+		</svg>
+	</div>
+</template>
+
 <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase-database.js"></script>
 <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase-messaging.js"></script>
 <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
+<script type="text/javascript" src="https://gridsound.github.io/gs-ui-components/gsuiSlider/gsuiSlider.js"></script>
+<script type="text/javascript" src="https://gridsound.github.io/gs-webaudio-library/src/gswaBuffer.js"></script>
 <script type="text/javascript" src="https://gridsound.github.io/gs-ui-components/gsuiAudioBlock/gsuiAudioBlock.js"></script>
 <script type="text/javascript" src="https://gridsound.github.io/gs-ui-components/gsuiWaveform/gsuiWaveform.js"></script>
 <script type="text/javascript" src="js/db.js"></script>

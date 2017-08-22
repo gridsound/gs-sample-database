@@ -168,7 +168,6 @@
 		font-size: var( --selections-info-fontSize );
 		font-variant: all-small-caps;
 		font-weight: bold;
-		opacity: .5;
 		box-shadow: var( --result-bs-top );
 
 	}
@@ -177,7 +176,7 @@
 			cursor: pointer;
 		}
 		.tab.active {
-			background-color: rgba( 255, 255, 255, .2 );
+			background-color: var( --selections-tab-bg );
 		}
 	#selected,
 	.sequencer {
