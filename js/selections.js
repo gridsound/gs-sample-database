@@ -5,9 +5,13 @@ function selections() {
 
 	this.rootElement = root;
 	this.selected = [];
+	this.elSelectedNb = document.getElementById( "selected-nb" );
 }
 
 selections.prototype = {
+	selectedNb( n ) {
+		this.elSelectedNb.textContent = n;
+	},
 	isAlreadySelected( id ) {
 		if ( this.selected.indexOf( id ) !== -1 ) {
 			document.getElementById( id ).classList.toggle( "selected" );
@@ -22,6 +26,7 @@ selections.prototype = {
 			sequencer.remove( id );
 		}
 		document.getElementById( id ).classList.toggle( "selected" );
+		this.selectedNb( this.selected.length );
 	},
 	cloneElUiBlock( id ) {
 		var uiBlock = samples._newAudioBlock( id, samples.bank[ id ][ "name" ] );
