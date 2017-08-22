@@ -3,7 +3,7 @@
 	flex: 1;
 	flex-direction: column;
 }
-	.seq-menu {
+	#seq-menu {
 		display: flex;
 		align-items: center;
 		height: 40px;
@@ -23,7 +23,11 @@
 			font-family: FontAwesome;
 			content: "\f04b";
 		}
-		.seq-menu .gsuiSlider.gsui-linear {
+		.seq-btn.stop::before {
+			font-family: FontAwesome;
+			content: "\f04d";
+		}
+		#seq-menu .gsuiSlider.gsui-linear {
 			background: var( --sequencer-gsuiSlider-bg );
 		}
 	#seq-rows {

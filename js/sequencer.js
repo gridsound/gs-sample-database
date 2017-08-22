@@ -3,18 +3,40 @@
 function sequencer( b, s ) {
 	var root = this._init();
 
-	this.rootElement = root;
-	this.rootElement.seqRows = document.getElementById( "seq-rows" );
 	this.beats( b );
 	this.steps( s );
+	this.rootElement = root;
+	this.rootElement.seqRows = document.getElementById( "seq-rows" );
+
 	this.pattern = {};
-	this.uiSlider = new gsuiSlider();
-	document.getElementById( "sliderWrap" ).appendChild( this.uiSlider.rootElement );
-	this.uiSlider.resize( 150, 24 );
-	this.uiSlider.options( { min: 10, max: 240, step: 1, value: 120 } );
+
+	this.elMenu = document.getElementById( "seq-menu" );
+	// Play/Stop button
+	this.elMenu.elBtnPlay = this.elMenu.querySelector( "#state" );
+	this.elMenu.elBtnPlay.onclick = this._state.bind( this, this.elMenu.elBtnPlay );
+
+	// Slider BPM
+	this.elMenu.uiSlider = new gsuiSlider();
+	document.getElementById( "sliderWrap" ).appendChild( this.elMenu.uiSlider.rootElement );
+	this.elMenu.uiSlider.oninput = this._evt_updateBpm.bind( this );
+	this.elMenu.uiSlider.resize( 150, 24 );
+	this.elMenu.uiSlider.options( { min: 10, max: 240, step: 1, value: 120 } );
+	this.elMenu.elBpm = this.elMenu.querySelector( "#bpm" );
+	this._evt_updateBpm();
 }
 
 sequencer.prototype = {
+	_evt_updateBpm() {
+		this.elMenu.elBpm.textContent = this.elMenu.uiSlider.value;
+	},
+	_evt_play( ) {},
+	_evt_stop( ) {},
+	_state( elBtn ) {
+		elBtn.classList.contains( "play" ) && this._evt_play()
+		elBtn.classList.contains( "stop" ) && this._evt_stop()
+		elBtn.classList.toggle( "stop" );
+		elBtn.classList.toggle( "play" );
+	},
 	beats( b ) {
 		this.beats = b;
 	},

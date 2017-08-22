@@ -72,5 +72,5 @@
 	--sequencer-row: rgba( 255, 255, 255, .05 );
 	--sequencer-gsuiSlider-bg: none;
 	--selections-tab-bg: rgba( 255, 255, 255, .2 );
-	--sequencer-menu-btnhover: rgba( 255, 255, 255, .3 );
+	--sequencer-menu-btnhover: rgba( 255, 255, 255, .1 );
 }
