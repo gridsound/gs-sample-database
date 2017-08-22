@@ -45,7 +45,11 @@ samples.prototype = {
 		this.currABSN = ctx.createBufferSource();
 		this.currABSN.connect( ctx.destination );
 		this.currABSN.buffer = this.bank[ id ][ "buffer" ];
-		this.currABSN.start(); // this.currABSN.start( when || 0 ); 
+		this.currABSN.start(); // this.currABSN.start( when || 0 );
+		document.getElementById( id ).gsuiAudioBlock.start();
+		selections.rootElement
+			.querySelector( `[data-id="${ id }"]` )
+			.gsuiAudioBlock.start();
 	},
 	stop() {
 		this.currABSN && this.currABSN.stop();
