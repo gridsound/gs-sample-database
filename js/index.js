@@ -22,15 +22,15 @@ function switchTheme() {
 
 function switchPage() {
 	var clApp = document.getElementById( "app" ).classList;
-	
+
 	clApp.toggle( "result", isValidHash( location.hash ) );
 	clApp.toggle( "main", !isValidHash( location.hash ) );
 	if ( isValidHash( location.hash ) ) {
-		window.search.setInput( location.hash.replace( /\+/g, " " ).substring( 2 ) );
+		search.setInput( location.hash.replace( /\+/g, " " ).substring( 2 ) );
 	} else {
 		selections.clear();
-		sequencer.clear();
-		window.search.setInput( "" );
+		sequencer.ui.clear();
+		search.setInput( "" );
 	}
 }
 
@@ -65,6 +65,7 @@ gswaBuffer.prototype._setDataFromArrayBuffer = function( arrayBuffer ) {
 
 function gsSampleDatabase() {
 	window.AudioContext = window.AudioContext || window.webkitAudioContext;
+	window.ctx = new window.AudioContext;
 	window.onhashchange = switchPage;
 	window.search = new search(
 		document.querySelector( "form" ),
@@ -72,15 +73,16 @@ function gsSampleDatabase() {
 		document.getElementById( "keywords" ),
 		document.getElementById( "result" )
 	);
-	window.samples = new samples();
-	window.selections = new selections();
-	window.sequencer = new sequencer( 4, 4 );
-	window.ctx = new window.AudioContext;
+	window.samples = new Samples();
+	window.selections = new Selections();
 	document.getElementById( "theme" ).onclick = switchTheme;
+
+	sequencer.init( 4, 4 );
 
 	switchPage();
 	selectionsTabs();
-	isValidHash( location.hash ) && window.search._evt_send();
+	isValidHash( location.hash ) && search._evt_send();
+
 }
 
 gsSampleDatabase();

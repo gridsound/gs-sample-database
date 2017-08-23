@@ -1,6 +1,6 @@
 "use strict";
 
-function selections() {
+function Selections() {
 	var root = this._init();
 
 	this.rootElement = root;
@@ -8,7 +8,7 @@ function selections() {
 	this.elSelectedNb = document.getElementById( "selected-nb" );
 }
 
-selections.prototype = {
+Selections.prototype = {
 	selectedNb( n ) {
 		this.elSelectedNb.textContent = n;
 	},
@@ -20,10 +20,10 @@ selections.prototype = {
 	toggle( id ) {
 		if ( this.selected.indexOf( id ) === -1 ) {
 			this.add( id );
-			sequencer.add( id );
+			sequencer.ui.add( id );
 		} else {
 			this.remove( id );
-			sequencer.remove( id );
+			sequencer.ui.remove( id );
 		}
 		document.getElementById( id ).classList.toggle( "selected" );
 		this.selectedNb( this.selected.length );

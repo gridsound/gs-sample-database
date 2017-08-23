@@ -1,11 +1,11 @@
 "use strict";
 
-function samples() {
+function Samples() {
 	this.bank = {};
 	this.currWaBuff = null;
 }
 
-samples.prototype = {
+Samples.prototype = {
 	_newAudioBlock( id, name ) {
 		var uiBlock = new gsuiAudioBlock();
 
@@ -67,7 +67,7 @@ samples.prototype = {
 			selections.isAlreadySelected( id );
 		});
 	},
-	loadSamples( el, data ) {
+	loadsamples( el, data ) {
 		data && data.then( ( metaData ) => {
 			metaData.forEach( sampleData => {
 				var url = sampleData.downloadURLs[ 0 ];

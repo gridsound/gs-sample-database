@@ -59,7 +59,7 @@ search.prototype = {
 	_evt_send( e ) {
 		e && e.preventDefault();
 		window.db.hasOwnProperty( this.elInput.value ) &&
-			samples.loadSamples.call(
+			samples.loadsamples.call(
 				samples,
 				document.getElementById( "result" ),
 				window.api.cloudStorageDownload( this.elInput.value, "getMetadata" ) );
